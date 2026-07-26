@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>兵装アーカイブ — うめンち 自宅要塞 作戦司令部</title>
+<meta name="description" content="家芸人うめが5年分の居住実験で実地検証した、自宅要塞化のためのおすすめ装備リスト。デスク環境・家電・スマートホーム・日用品・家具・ガジェットをジャンル別に配備。">
+<meta property="og:title" content="兵装アーカイブ — うめンち 自宅要塞 作戦司令部">
+<meta property="og:description" content="要塞主が実地検証した装備の調達リスト。QOLを爆上げする厳選アイテムをジャンル別に配備。">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0f14'/%3E%3Crect x='6' y='6' width='20' height='20' fill='none' stroke='%23ffc233' stroke-width='3'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23ffc233'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f14; --panel:#111823; --panel2:#0e141d; --line:#1f2c3d;
+  --amber:#ffc233; --amber-d:#e09c00; --green:#3ddc84; --red:#ff5252;
+  --txt:#e8edf4; --sub:#8fa1b8; --mono:'Share Tech Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Zen Kaku Gothic New',sans-serif;line-height:1.9;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+section{padding:70px 0;position:relative}
+.mono{font-family:var(--mono)}
+h2{font-size:26px;font-weight:900;letter-spacing:.04em;margin-bottom:6px}
+h2 .tag{display:block;font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.3em;margin-bottom:8px}
+.lead{color:var(--sub);margin-bottom:40px;font-size:15px}
+
+/* グリッド背景 */
+.gridbg{position:absolute;inset:0;background:
+  linear-gradient(rgba(255,194,51,.05) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,194,51,.05) 1px,transparent 1px);
+  background-size:44px 44px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 75%)}
+
+/* ===== ナビ ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,15,20,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:54px}
+nav .brand{font-weight:900;letter-spacing:.08em;font-size:15px;text-decoration:none;color:var(--txt)}
+nav .brand b{color:var(--amber)}
+nav .links{display:flex;gap:22px;font-family:var(--mono);font-size:12px;letter-spacing:.12em}
+nav .links a{color:var(--sub);text-decoration:none;transition:.2s}
+nav .links a:hover{color:var(--amber)}
+nav .links a.active{color:var(--amber)}
+@media(max-width:760px){nav .links{display:none}}
+
+/* ===== ボタン ===== */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;font-size:15px;font-weight:700;text-decoration:none;cursor:pointer;transition:.2s;letter-spacing:.06em;position:relative}
+.btn-amber{background:var(--amber);color:#141413;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.btn-amber:hover{background:#ffd24d;transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,194,51,.35)}
+.btn-ghost{color:var(--amber);border:1px solid var(--amber);clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.btn-ghost:hover{background:rgba(255,194,51,.1)}
+
+/* ===== スクロール出現 ===== */
+.rv{opacity:0;transform:translateY(30px);transition:.7s ease}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+
+/* ===== ヘッダー帯 ===== */
+.arsenal-hero{padding-top:130px;padding-bottom:20px;position:relative;overflow:hidden}
+.arsenal-hero .gridbg{mask-image:radial-gradient(ellipse 90% 100% at 50% 0%,#000 20%,transparent 70%)}
+.arsenal-hero .wrap{position:relative;z-index:2}
+.classified{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.35em;color:var(--red);border:2px solid var(--red);padding:6px 18px;transform:rotate(-2deg);opacity:.9;margin-bottom:22px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:900;letter-spacing:.02em;line-height:1.3;margin-bottom:14px}
+h1 .amber{color:var(--amber);text-shadow:0 0 24px rgba(255,194,51,.4)}
+.arsenal-hero p.desc{color:var(--sub);max-width:640px;font-size:15px}
+.arsenal-meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;font-family:var(--mono);font-size:12px;color:var(--sub);letter-spacing:.12em}
+.arsenal-meta b{color:var(--amber);font-size:20px;font-weight:700;margin-right:6px}
+.disclaimer{font-family:var(--mono);font-size:11px;color:#4e6076;margin-top:22px;letter-spacing:.08em;line-height:1.8}
+
+/* ===== ジャンル別セクター ===== */
+.sector{padding:44px 0}
+.sector-head{display:flex;align-items:baseline;gap:16px;margin-bottom:26px;border-bottom:1px dashed var(--line);padding-bottom:14px;flex-wrap:wrap}
+.sector-head .sid{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.25em}
+.sector-head h2{font-size:22px;margin:0}
+.sector-head .cnt{font-family:var(--mono);font-size:12px;color:var(--sub);letter-spacing:.15em;margin-left:auto}
+
+/* ===== 商品カード ===== */
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.product{background:var(--panel2);border:1px solid var(--line);padding:24px 22px 22px;display:flex;flex-direction:column;position:relative;transition:.3s}
+.product::before,.product::after{content:"";position:absolute;width:12px;height:12px;border:2px solid var(--amber);transition:.3s;opacity:.55}
+.product::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
+.product::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
+.product:hover{transform:translateY(-6px);border-color:var(--amber);box-shadow:0 16px 40px rgba(0,0,0,.55)}
+.product:hover::before,.product:hover::after{width:22px;height:22px;opacity:1}
+.product .gtag{font-family:var(--mono);font-size:10.5px;color:var(--amber);letter-spacing:.2em;margin-bottom:11px}
+.product h3{font-size:16px;font-weight:900;line-height:1.55;margin-bottom:11px;color:var(--txt)}
+.product p{font-size:13.5px;color:var(--sub);flex:1 0 auto;margin-bottom:20px}
+.product .acts{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.buy{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:#141413;font-weight:700;font-size:13px;letter-spacing:.04em;text-decoration:none;padding:10px 18px;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);transition:.2s}
+.buy:hover{background:#ffd24d;transform:translateY(-2px);box-shadow:0 8px 22px rgba(255,194,51,.3)}
+.buy svg{width:14px;height:14px}
+.watch{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11.5px;color:var(--sub);text-decoration:none;letter-spacing:.08em;transition:.2s}
+.watch:hover{color:var(--amber)}
+.watch svg{width:13px;height:13px}
+
+footer.site{padding:40px 0;text-align:center;font-family:var(--mono);font-size:12px;color:var(--sub);border-top:1px solid var(--line);letter-spacing:.15em}
+footer.site b{color:var(--amber)}
+footer.site .back{display:inline-block;margin-top:14px;color:var(--amber);text-decoration:none}
+@media(max-width:760px){section{padding:50px 0}.sector{padding:34px 0}.arsenal-hero{padding-top:104px}}
+</style>
+</head>
+<body id="top">
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html#top">UMENCHI <b>FORTRESS</b></a>
+    <div class="links">
+      <a href="index.html#spec">SPEC</a>
+      <a href="index.html#files">ARCHIVE</a>
+      <a href="index.html#videos">VIDEOS</a>
+      <a href="index.html#status">STATUS</a>
+      <a href="index.html#threats">THREATS</a>
+      <a href="arsenal.html" class="active">ARSENAL</a>
+      <a href="index.html#channels">COMMS</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ヘッダー帯 -->
+<div class="arsenal-hero">
+  <div class="gridbg"></div>
+  <div class="wrap">
+    <span class="classified">CLASSIFIED — ARSENAL</span>
+    <h1>兵装アーカイブ<br><span class="amber">要塞化を支える、実地検証済み装備。</span></h1>
+    <p class="desc">FILE No.003「装備調達・検証」の全記録。家芸人うめが5年分の居住実験で実際に導入・検証し、自宅要塞のQOLを爆上げした装備をジャンル別に配備しています。導入可否はすべて居住実験データにより決裁済み。</p>
+    <div class="arsenal-meta">
+      <span><b>31</b>装備 配備中</span>
+      <span><b>6</b>セクター 分類</span>
+    </div>
+    <p class="disclaimer">※ 本ページのリンクにはアフィリエイト（PR）リンクを含みます。購入により司令部の運営が支援されます。<br>※ 装備は動画紹介時点の情報です。価格・仕様・在庫はリンク先でご確認ください。</p>
+  </div>
+</div>
+
+<!-- SECTOR 01: デスク環境 -->
+<section class="sector">
+  <div class="wrap">
+    <div class="sector-head rv">
+      <span class="sid">SECTOR 01</span>
+      <h2>デスク環境</h2>
+      <span class="cnt">9 UNITS</span>
+    </div>
+    <div class="products">
+      <div class="product rv d1">
+        <div class="gtag">DESK ENV</div>
+        <h3>電動昇降デスク（脚のみ）</h3>
+        <p>「在宅ワーク沼」枠の中核。天板を自由に選べる脚のみタイプの電動昇降デスク。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3Kj7R7X" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hBBT2SSOOF8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d2">
+        <div class="gtag">DESK ENV</div>
+        <h3>昇降デスク（天板付き）</h3>
+        <p>天板選びに迷わない一体型の昇降デスク。在宅ワーク環境の土台。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3KLqeUM" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hBBT2SSOOF8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d3">
+        <div class="gtag">DESK ENV</div>
+        <h3>IKEA カールビー天板</h3>
+        <p>昇降デスク脚と組み合わせる定番天板。コスパと見た目のバランスが良い。</p>
+        <div class="acts">
+          <a class="buy" href="https://a.r10.to/hkzGsG" target="_blank" rel="noopener sponsored">楽天で見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hD5EhfBnLWI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d4">
+        <div class="gtag">DESK ENV</div>
+        <h3>SIHOO DORO C500（オフィスチェア）</h3>
+        <p>10時間座り続けても疲れないと紹介した椅子。首・肩・腰の負担軽減が主眼。</p>
+        <div class="acts">
+          <a class="buy" href="https://bit.ly/3OQgX2n" target="_blank" rel="noopener sponsored">商品を見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hBBT2SSOOF8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d1">
+        <div class="gtag">DESK ENV</div>
+        <h3>BenQ ScreenBar Halo 2（モニターライト）</h3>
+        <p>単独レビュー動画を出すほどの推し。デスクの生産性と目の快適さを守るモニターライトの定番進化版。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3QtMQyG" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/GXrHcCJ51HU" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d2">
+        <div class="gtag">DESK ENV</div>
+        <h3>モニターバーライト</h3>
+        <p>手元を照らして目の負担を減らすモニター上設置型ライト。デスク環境の定番。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/41awf2r" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hBBT2SSOOF8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d3">
+        <div class="gtag">DESK ENV</div>
+        <h3>4Kサブモニター</h3>
+        <p>在宅ワークの作業効率を上げるサブモニター。4K解像度で情報量を確保。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3y4jy07" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hBBT2SSOOF8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d4">
+        <div class="gtag">DESK ENV</div>
+        <h3>天板下引き出し</h3>
+        <p>デスクの天板下に後付けできる引き出しで、卓上の小物を一掃できる。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3nWrICw" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hBBT2SSOOF8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d1">
+        <div class="gtag">DESK ENV</div>
+        <h3>配線整理トレー</h3>
+        <p>デスク下の配線を床から浮かせて掃除と見た目を両立する定番トレー。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3Um65Yd" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hBBT2SSOOF8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTOR 02: 家電 -->
+<section class="sector">
+  <div class="wrap">
+    <div class="sector-head rv">
+      <span class="sid">SECTOR 02</span>
+      <h2>家電</h2>
+      <span class="cnt">7 UNITS</span>
+    </div>
+    <div class="products">
+      <div class="product rv d1">
+        <div class="gtag">APPLIANCE</div>
+        <h3>ロボット掃除機（2024最新モデル）</h3>
+        <p>「生活を自動化して、怠惰の極みへ」枠の筆頭。掃除の完全自動化担当。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/4cV0MXU" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/mrU8-OsfRf8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d2">
+        <div class="gtag">APPLIANCE</div>
+        <h3>ロボット掃除機（ロボロック）</h3>
+        <p>プライムデー2026で紹介。掃除を完全自動化して怠惰なQOLを支える。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/4eLX3zQ" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/H17yFI48ZbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d3">
+        <div class="gtag">APPLIANCE</div>
+        <h3>有機ELテレビ（映像沼）</h3>
+        <p>「映像沼」と呼ぶほどの画質推し。快適な籠城生活の中核。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3v8KXt1" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hD5EhfBnLWI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d4">
+        <div class="gtag">APPLIANCE</div>
+        <h3>ブルーエア 空気清浄機（ダストマグネット）</h3>
+        <p>「快適な籠城のために」枠の常連。居住環境最適化の要となる空気清浄機。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3Kt3lES" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hD5EhfBnLWI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d1">
+        <div class="gtag">APPLIANCE</div>
+        <h3>SwitchBotサーキュレーター</h3>
+        <p>プライムデー2026で紹介。空調効率を上げて電気代の最適化に効く定番アイテム。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/4woHTGt" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/H17yFI48ZbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d2">
+        <div class="gtag">APPLIANCE</div>
+        <h3>全自動洗濯機</h3>
+        <p>洗濯の自動化担当。設置時はフタの向き（開き方向）の事前チェックが必須。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/4cKrnaI" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/mrU8-OsfRf8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d3">
+        <div class="gtag">APPLIANCE</div>
+        <h3>ブラウン オーラルB 電動歯ブラシ</h3>
+        <p>プライムデー2026で紹介。手磨きに戻れなくなる電動歯ブラシの定番。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/44fMZck" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/H17yFI48ZbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTOR 03: スマートホーム -->
+<section class="sector">
+  <div class="wrap">
+    <div class="sector-head rv">
+      <span class="sid">SECTOR 03</span>
+      <h2>スマートホーム</h2>
+      <span class="cnt">5 UNITS</span>
+    </div>
+    <div class="products">
+      <div class="product rv d1">
+        <div class="gtag">SMART HOME</div>
+        <h3>SwitchBot 顔認証パッドPro（手のひら静脈認証）</h3>
+        <p>プライムデー2026で紹介。顔認証＋手のひら静脈認証で玄関の解錠が完全ハンズフリーになる。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/4vckeYV" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/H17yFI48ZbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d2">
+        <div class="gtag">SMART HOME</div>
+        <h3>玄関スマートロック（指紋認証）</h3>
+        <p>指紋認証で鍵を持ち歩かない生活に。スマートホーム化の第一歩。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3uKQ95O" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/mrU8-OsfRf8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d3">
+        <div class="gtag">SMART HOME</div>
+        <h3>Amazon Echo Show 5</h3>
+        <p>プライムデー2026のQOL爆上げ枠で紹介。スマートホームの入口になるディスプレイ付きスマートスピーカー。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/44MRNpF" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/H17yFI48ZbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d4">
+        <div class="gtag">SMART HOME</div>
+        <h3>Ring 屋外カメラ（ソーラー対応）</h3>
+        <p>ソーラー給電で配線不要の屋外防犯カメラ。要塞の外郭防衛システム。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/48XcsqQ" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hD5EhfBnLWI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d1">
+        <div class="gtag">SMART HOME</div>
+        <h3>Ring 屋内カメラ</h3>
+        <p>「家の防御力を上げる」枠の定番。留守中の見守りに使う屋内カメラ。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/4ckfY1l" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hD5EhfBnLWI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTOR 04: 日用品 -->
+<section class="sector">
+  <div class="wrap">
+    <div class="sector-head rv">
+      <span class="sid">SECTOR 04</span>
+      <h2>日用品</h2>
+      <span class="cnt">5 UNITS</span>
+    </div>
+    <div class="products">
+      <div class="product rv d1">
+        <div class="gtag">DAILY GOODS</div>
+        <h3>マグネット式ソープディスペンサー</h3>
+        <p>壁付けマグネットで浮かせる収納にできるディスペンサー。水回りのヌメリ対策。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3UZhIny" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/mrU8-OsfRf8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d2">
+        <div class="gtag">DAILY GOODS</div>
+        <h3>自動泡ソープディスペンサー</h3>
+        <p>手をかざすだけで泡が出る非接触ディスペンサー。細かい家事ストレスを削る。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3YqvW3d" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/mrU8-OsfRf8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d3">
+        <div class="gtag">DAILY GOODS</div>
+        <h3>排気口カバー</h3>
+        <p>プライムデー2026で紹介。コンロ奥の排気口の油汚れを防ぐ地味に効く名品。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/4frfo5p" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/H17yFI48ZbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d4">
+        <div class="gtag">DAILY GOODS</div>
+        <h3>クナイプ バスソルト スーパーミント</h3>
+        <p>プライムデー2026で紹介。夏の風呂上がりが激変する清涼系バスソルト。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/4f1Xg0F" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/H17yFI48ZbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d1">
+        <div class="gtag">DAILY GOODS</div>
+        <h3>リステリン トータルケアゼロプラス 1500ml</h3>
+        <p>プライムデー2026で紹介。大容量でセール時のまとめ買いに向く口腔ケア定番。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3SRsZKw" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/H17yFI48ZbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTOR 05: 家具・インテリア -->
+<section class="sector">
+  <div class="wrap">
+    <div class="sector-head rv">
+      <span class="sid">SECTOR 05</span>
+      <h2>家具・インテリア</h2>
+      <span class="cnt">2 UNITS</span>
+    </div>
+    <div class="products">
+      <div class="product rv d1">
+        <div class="gtag">FURNITURE</div>
+        <h3>ロボット掃除機が通れるソファー</h3>
+        <p>脚下の高さがロボット掃除機対応。家具選びから自動化を逆算する発想の一品。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3HXGktq" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/mrU8-OsfRf8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d2">
+        <div class="gtag">FURNITURE</div>
+        <h3>ハイチェア（カウンターキッチン用）</h3>
+        <p>カウンターキッチンでの食事・作業を快適にする定番チェア。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/3VjfmPC" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/hD5EhfBnLWI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTOR 06: ガジェット -->
+<section class="sector">
+  <div class="wrap">
+    <div class="sector-head rv">
+      <span class="sid">SECTOR 06</span>
+      <h2>ガジェット</h2>
+      <span class="cnt">2 UNITS</span>
+    </div>
+    <div class="products">
+      <div class="product rv d1">
+        <div class="gtag">GADGET</div>
+        <h3>Bambu Lab P2S Combo（3Dプリンター）</h3>
+        <p>プライムデー2026で「未来への投資となる隠れた名作」枠として紹介。家庭用3Dプリンターの本命。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/4f2j6Bh" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/H17yFI48ZbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+      <div class="product rv d2">
+        <div class="gtag">GADGET</div>
+        <h3>EarFun Clip 2（イヤーカフ型イヤホン）</h3>
+        <p>プライムデー2026のQOL爆上げ枠で紹介。耳を塞がないイヤーカフ型で価格破壊クラスのお得さ。</p>
+        <div class="acts">
+          <a class="buy" href="https://amzn.to/4vEpbKZ" target="_blank" rel="noopener sponsored">Amazonで見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          <a class="watch" href="https://youtu.be/H17yFI48ZbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>紹介動画</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  UMENCHI FORTRESS COMMAND — <b>家芸人うめ</b> / ARSENAL ARCHIVE
+  <br><a class="back" href="index.html#top">&lt;- 司令部トップに戻る</a>
+</footer>
+
+<script>
+// スクロール出現
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add('in');
+  io.unobserve(e.target);
+},{threshold:.2}));
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

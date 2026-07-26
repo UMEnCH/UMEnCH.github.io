@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>通信要請 — うめンち 自宅要塞 作戦司令部</title>
+<meta name="description" content="うめンち作戦司令部への通信回線。コラボ・取材・PR・出演のご相談、動画や要塞化に関するお問い合わせはこちらから。">
+<meta property="og:title" content="通信要請 — うめンち 自宅要塞 作戦司令部">
+<meta property="og:description" content="司令部への通信回線。コラボ・取材・PR・出演のご相談はこちらから。">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0f14'/%3E%3Crect x='6' y='6' width='20' height='20' fill='none' stroke='%23ffc233' stroke-width='3'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23ffc233'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f14; --panel:#111823; --panel2:#0e141d; --line:#1f2c3d;
+  --amber:#ffc233; --amber-d:#e09c00; --green:#3ddc84; --red:#ff5252;
+  --txt:#e8edf4; --sub:#8fa1b8; --mono:'Share Tech Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Zen Kaku Gothic New',sans-serif;line-height:1.9;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+section{padding:60px 0;position:relative}
+
+/* グリッド背景 */
+.gridbg{position:absolute;inset:0;background:
+  linear-gradient(rgba(255,194,51,.05) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,194,51,.05) 1px,transparent 1px);
+  background-size:44px 44px;mask-image:radial-gradient(ellipse 90% 100% at 50% 0%,#000 20%,transparent 70%)}
+
+/* ===== ナビ ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,15,20,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:54px}
+nav .brand{font-weight:900;letter-spacing:.08em;font-size:15px;text-decoration:none;color:var(--txt)}
+nav .brand b{color:var(--amber)}
+nav .links{display:flex;gap:22px;font-family:var(--mono);font-size:12px;letter-spacing:.12em}
+nav .links a{color:var(--sub);text-decoration:none;transition:.2s}
+nav .links a:hover{color:var(--amber)}
+nav .links a.active{color:var(--amber)}
+@media(max-width:760px){nav .links{display:none}}
+
+/* ===== ボタン ===== */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;font-size:15px;font-weight:700;text-decoration:none;cursor:pointer;transition:.2s;letter-spacing:.06em;position:relative;border:none}
+.btn-amber{background:var(--amber);color:#141413;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.btn-amber:hover{background:#ffd24d;transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,194,51,.35)}
+
+/* ===== スクロール出現 ===== */
+.rv{opacity:0;transform:translateY(30px);transition:.7s ease}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* ===== ヘッダー帯 ===== */
+.page-hero{padding-top:120px;padding-bottom:10px;position:relative;overflow:hidden}
+.page-hero .wrap{position:relative;z-index:2}
+.classified{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.35em;color:var(--red);border:2px solid var(--red);padding:6px 18px;transform:rotate(-2deg);opacity:.9;margin-bottom:22px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:900;letter-spacing:.02em;line-height:1.3;margin-bottom:14px}
+h1 .amber{color:var(--amber);text-shadow:0 0 24px rgba(255,194,51,.4)}
+.page-hero p.desc{color:var(--sub);max-width:620px;font-size:15px}
+
+/* ===== フォーム ===== */
+.form-panel{background:var(--panel2);border:1px solid var(--line);padding:38px 34px;position:relative;max-width:660px}
+.form-panel::before,.form-panel::after{content:"";position:absolute;width:16px;height:16px;border:2px solid var(--amber);transition:.3s}
+.form-panel::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
+.form-panel::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
+.form-label{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.25em;margin-bottom:20px}
+.field{margin-bottom:22px}
+.field label{display:block;font-family:var(--mono);font-size:11px;color:var(--sub);letter-spacing:.15em;margin-bottom:9px}
+.field label .req{color:var(--red);margin-left:6px}
+.field input,.field select,.field textarea{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--txt);font-family:'Zen Kaku Gothic New',sans-serif;font-size:15px;padding:13px 15px;transition:.2s}
+.field input::placeholder,.field textarea::placeholder{color:#4e6076}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,194,51,.12)}
+.field textarea{min-height:160px;resize:vertical;line-height:1.7}
+.field select{appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238fa1b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;padding-right:42px}
+.honey{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+.form-note{font-family:var(--mono);font-size:11px;color:#4e6076;margin-top:20px;letter-spacing:.04em;line-height:1.9}
+.alt-comms{font-family:var(--mono);font-size:12px;color:var(--sub);margin-top:26px;letter-spacing:.06em}
+.alt-comms a{color:var(--amber);text-decoration:none}
+.alt-comms a:hover{text-decoration:underline}
+
+/* ===== 送信完了バナー ===== */
+.sent-banner{display:none;border:1px solid var(--green);background:rgba(61,220,132,.08);padding:22px 26px;margin-bottom:30px;position:relative;max-width:660px}
+.sent-banner.show{display:block}
+.sent-banner .st{font-family:var(--mono);font-size:12px;color:var(--green);letter-spacing:.2em;margin-bottom:6px}
+.sent-banner p{font-size:14px;color:var(--txt)}
+
+footer.site{padding:40px 0;text-align:center;font-family:var(--mono);font-size:12px;color:var(--sub);border-top:1px solid var(--line);letter-spacing:.15em;margin-top:20px}
+footer.site b{color:var(--amber)}
+footer.site .back{display:inline-block;margin-top:14px;color:var(--amber);text-decoration:none}
+@media(max-width:760px){section{padding:44px 0}.page-hero{padding-top:100px}.form-panel{padding:30px 22px}}
+</style>
+</head>
+<body id="top">
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html#top">UMENCHI <b>FORTRESS</b></a>
+    <div class="links">
+      <a href="index.html#spec">SPEC</a>
+      <a href="index.html#files">ARCHIVE</a>
+      <a href="index.html#videos">VIDEOS</a>
+      <a href="index.html#threats">THREATS</a>
+      <a href="arsenal.html">ARSENAL</a>
+      <a href="index.html#channels">COMMS</a>
+      <a href="contact.html" class="active">CONTACT</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ヘッダー帯 -->
+<div class="page-hero">
+  <div class="gridbg"></div>
+  <div class="wrap">
+    <span class="classified">CLASSIFIED — CONTACT</span>
+    <h1>通信要請<br><span class="amber">司令部への直通回線。</span></h1>
+    <p class="desc">コラボ・出演のご相談、取材・PR・タイアップ、動画や要塞化に関するお問い合わせはこの回線から。司令部（うめ）が確認し次第、順次応答します。</p>
+  </div>
+</div>
+
+<!-- フォーム -->
+<section>
+  <div class="wrap">
+    <div class="sent-banner" id="sentBanner">
+      <div class="st">[OK] TRANSMISSION RECEIVED</div>
+      <p>通信を受信しました。司令部が確認のうえ、順次応答します。送信ありがとうございました。</p>
+    </div>
+
+    <div class="form-panel rv">
+      <div class="form-label">TRANSMISSION FORM / 通信フォーム</div>
+      <form action="https://formsubmit.co/kuskmne78@gmail.com" method="POST">
+        <!-- FormSubmit 設定 -->
+        <input type="hidden" name="_subject" value="【うめンち】お問い合わせ（通信要請フォーム）">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://umench.github.io/contact.html?sent=1">
+        <input type="hidden" name="_autoresponse" value="うめンち作戦司令部です。通信を受信しました。内容を確認のうえ、順次応答いたします。しばらくお待ちください。">
+        <!-- スパム対策のハニーポット（人間は入力しない） -->
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off">
+
+        <div class="field">
+          <label for="name">発信者名（お名前）<span class="req">*</span></label>
+          <input type="text" id="name" name="お名前" required placeholder="例）うめ 太郎 / 株式会社◯◯">
+        </div>
+        <div class="field">
+          <label for="email">返信先メールアドレス<span class="req">*</span></label>
+          <input type="email" id="email" name="メールアドレス" required placeholder="例）you@example.com">
+        </div>
+        <div class="field">
+          <label for="type">通信種別</label>
+          <select id="type" name="お問い合わせ種別">
+            <option>コラボ・出演のご相談</option>
+            <option>取材・PR・タイアップ</option>
+            <option>動画・商品についての質問</option>
+            <option>要塞化・家づくりの相談</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">通信本文（メッセージ）<span class="req">*</span></label>
+          <textarea id="message" name="メッセージ" required placeholder="ご用件をご記入ください。"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-amber">通信を送信する</button>
+
+        <p class="form-note">
+          ※ 送信内容はフォーム処理サービス FormSubmit を経由して司令部のメールに届きます。<br>
+          ※ ご入力いただいた個人情報は、お問い合わせへの応答以外の目的には使用しません。<br>
+          ※ 送信後、確認ページに遷移する場合があります（初回はサービスの認証手続きが入ることがあります）。
+        </p>
+      </form>
+    </div>
+
+    <p class="alt-comms">
+      &gt; 別回線での連絡をご希望の場合は、
+      <a href="index.html#channels">通信チャネル（YouTube・X・note）</a>
+      もご利用ください。
+    </p>
+  </div>
+</section>
+
+<footer class="site">
+  UMENCHI FORTRESS COMMAND — <b>家芸人うめ</b> / CONTACT
+  <br><a class="back" href="index.html#top">&lt;- 司令部トップに戻る</a>
+</footer>
+
+<script>
+// 送信完了バナー（?sent=1 で表示）
+if (new URLSearchParams(location.search).get('sent') === '1') {
+  const b = document.getElementById('sentBanner');
+  if (b) { b.classList.add('show'); b.scrollIntoView({behavior:'smooth', block:'center'}); }
+}
+// スクロール出現
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('in');
+  io.unobserve(e.target);
+}), {threshold:.15});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
