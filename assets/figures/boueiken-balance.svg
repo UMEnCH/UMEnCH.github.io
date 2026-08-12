@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-labelledby="t d">
+<title id="t">作戦総括 — 投入した文明と、四本足</title>
+<desc id="d">人類側は八つの兵装と約十八万円を投入して七二時間かけて到達した快適を、むぎは無償・無自覚に初日から完成させていたという対比の図</desc>
+<style>
+  .f { font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .ttl { font-size: 21px; font-weight: 800; fill: #e8edf4; letter-spacing: .04em; }
+  .kick { font-size: 11px; font-weight: 700; fill: #ffc233; letter-spacing: .3em; }
+  .who { font-size: 15px; font-weight: 800; fill: #e8edf4; letter-spacing: .04em; }
+  .big { font-size: 34px; font-weight: 800; fill: #ffc233; }
+  .biggreen { font-size: 34px; font-weight: 800; fill: #3ddc84; }
+  .unit { font-size: 13px; font-weight: 700; fill: #8fa1b8; }
+  .item { font-size: 12.5px; fill: #cfd9e6; }
+  .sub { font-size: 12.5px; fill: #8fa1b8; }
+  .eq { font-size: 15px; font-weight: 800; fill: #8fa1b8; letter-spacing: .1em; }
+  .note { font-size: 13px; fill: #8fa1b8; }
+</style>
+
+<rect width="900" height="500" fill="#0e141d"/>
+<rect x="1" y="1" width="898" height="498" fill="none" stroke="#1f2c3d" stroke-width="2"/>
+<path d="M14 34 V14 H34" fill="none" stroke="#ffc233" stroke-width="2.5"/>
+<path d="M886 466 V486 H866" fill="none" stroke="#ffc233" stroke-width="2.5"/>
+
+<text class="f kick" x="40" y="40">FINAL REPORT</text>
+<text class="f ttl" x="40" y="68">作戦総括 — 投入した文明と、四本足</text>
+
+<!-- 左：人類 -->
+<g>
+  <rect x="40" y="96" width="380" height="326" rx="3" fill="#111823" stroke="#1f2c3d" stroke-width="1.5"/>
+  <rect x="40" y="96" width="380" height="4" fill="#ffc233"/>
+  <text class="f who" x="64" y="130">司令部（人類）</text>
+
+  <text class="f big" x="64" y="180">約18万円</text>
+  <text class="f unit" x="64" y="202">総投資額</text>
+
+  <text class="f sub" x="64" y="234">投入した兵装 — 8点</text>
+  <text class="f item" x="64" y="258">エアコン ／ サーキュレーター ／ こたつ</text>
+  <text class="f item" x="64" y="278">電気毛布 ／ カセットコンロ</text>
+  <text class="f item" x="64" y="298">ポータブル電源 ／ スマートインターホン</text>
+  <text class="f item" x="64" y="318">ロボット掃除機</text>
+
+  <line x1="64" y1="338" x2="396" y2="338" stroke="#1f2c3d" stroke-width="1"/>
+  <text class="f sub" x="64" y="362">動員した理論</text>
+  <text class="f item" x="64" y="382">熱力学 ／ 冗長化 ／ 群知能 ／ 社会的応答プロトコル</text>
+  <text class="f sub" x="64" y="406">到達まで 七二時間</text>
+</g>
+
+<!-- 中央：等号 -->
+<text class="f eq" x="450" y="245" text-anchor="middle">同じ</text>
+<text class="f eq" x="450" y="268" text-anchor="middle">「快適」</text>
+<path d="M424 288 H476 M424 300 H476" stroke="#8fa1b8" stroke-width="2"/>
+
+<!-- 右：むぎ -->
+<g>
+  <rect x="480" y="96" width="380" height="326" rx="3" fill="#101c17" stroke="#3ddc84" stroke-width="1.8"/>
+  <rect x="480" y="96" width="380" height="4" fill="#3ddc84"/>
+  <text class="f who" x="504" y="130">むぎ（四本足）</text>
+
+  <text class="f biggreen" x="504" y="180">0円</text>
+  <text class="f unit" x="504" y="202">総投資額</text>
+
+  <text class="f sub" x="504" y="234">投入した兵装 — 0点</text>
+  <text class="f item" x="504" y="258">こたつの黄金の座に、腹を見せて眠る</text>
+  <text class="f item" x="504" y="278">停電のときも、回覧板のときも、動じない</text>
+  <text class="f item" x="504" y="298">摂氏三八度を、電力供給なしに維持</text>
+
+  <line x1="504" y1="338" x2="836" y2="338" stroke="#1f2c3d" stroke-width="1"/>
+  <text class="f sub" x="504" y="362">動員した理論</text>
+  <text class="f item" x="504" y="382">なし</text>
+  <text class="f sub" x="504" y="406">到達まで 初日から</text>
+</g>
+
+<text class="f note" x="450" y="458" text-anchor="middle">それを、むぎは——</text>
+<text class="f note" x="450" y="482" text-anchor="middle" fill="#3ddc84">初日から、無償で、無自覚に、完成させていました</text>
+</svg>

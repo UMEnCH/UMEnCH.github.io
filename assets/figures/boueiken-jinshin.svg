@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-labelledby="t d">
+<title id="t">熱力学的縦深防御 — 四重の防衛線</title>
+<desc id="d">伝導・対流・輻射の三つの攻撃ベクトルに対し、エアコン・サーキュレーター・こたつ・電気毛布の四層で守り、中心の体温に到達させない構造の図</desc>
+<style>
+  .f { font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .ttl { font-size: 21px; font-weight: 800; fill: #e8edf4; letter-spacing: .04em; }
+  .kick { font-size: 11px; font-weight: 700; fill: #ffc233; letter-spacing: .3em; }
+  .lbl { font-size: 16px; font-weight: 800; fill: #e8edf4; }
+  .sub { font-size: 12.5px; fill: #8fa1b8; }
+  .no { font-size: 11px; font-weight: 700; fill: #ffc233; letter-spacing: .18em; }
+  .scope { font-size: 13px; font-weight: 700; fill: #ffc233; }
+  .enemy { font-size: 14px; font-weight: 800; fill: #ff8a80; }
+  .core { font-size: 17px; font-weight: 800; fill: #0b0f14; }
+  .note { font-size: 12.5px; fill: #8fa1b8; }
+</style>
+
+<rect width="900" height="500" fill="#0e141d"/>
+<rect x="1" y="1" width="898" height="498" fill="none" stroke="#1f2c3d" stroke-width="2"/>
+<path d="M14 34 V14 H34" fill="none" stroke="#ffc233" stroke-width="2.5"/>
+<path d="M886 466 V486 H866" fill="none" stroke="#ffc233" stroke-width="2.5"/>
+
+<text class="f kick" x="40" y="40">DEFENSE IN DEPTH</text>
+<text class="f ttl" x="40" y="68">熱力学的縦深防御 — 四重の防衛線</text>
+
+<!-- 敵：三つの攻撃ベクトル -->
+<g>
+  <text class="f sub" x="150" y="96">敵：寒気の攻撃ベクトル</text>
+  <rect x="150" y="106" width="600" height="34" rx="3" fill="#1a1016" stroke="#ff5252" stroke-width="1.5"/>
+  <text class="f enemy" x="255" y="128" text-anchor="middle">伝導</text>
+  <text class="f enemy" x="450" y="128" text-anchor="middle">対流</text>
+  <text class="f enemy" x="645" y="128" text-anchor="middle">輻射</text>
+</g>
+<path d="M255 144 V158 M450 144 V158 M645 144 V158" stroke="#ff5252" stroke-width="2" stroke-dasharray="4 3"/>
+
+<!-- 四層の防衛線 -->
+<g>
+  <rect x="150" y="164" width="600" height="46" rx="3" fill="#111823" stroke="#1f2c3d" stroke-width="1.5"/>
+  <rect x="150" y="164" width="4" height="46" fill="#ffc233"/>
+  <text class="f no" x="120" y="193" text-anchor="end">第一</text>
+  <text class="f lbl" x="172" y="186">エアコン</text>
+  <text class="f sub" x="172" y="203">空間全体を支配する戦略爆撃機。弱点は頭熱足寒問題</text>
+  <text class="f scope" x="736" y="193" text-anchor="end">全体</text>
+</g>
+<g>
+  <rect x="150" y="219" width="600" height="46" rx="3" fill="#111823" stroke="#1f2c3d" stroke-width="1.5"/>
+  <rect x="150" y="219" width="4" height="46" fill="#ffc233"/>
+  <text class="f no" x="120" y="248" text-anchor="end">第二</text>
+  <text class="f lbl" x="172" y="241">サーキュレーター</text>
+  <text class="f sub" x="172" y="258">天井の暖気を再分配する、空気の社会主義者</text>
+  <text class="f scope" x="736" y="248" text-anchor="end">循環</text>
+</g>
+<g>
+  <rect x="150" y="274" width="600" height="46" rx="3" fill="#111823" stroke="#1f2c3d" stroke-width="1.5"/>
+  <rect x="150" y="274" width="4" height="46" fill="#ffc233"/>
+  <text class="f no" x="120" y="303" text-anchor="end">第三</text>
+  <text class="f lbl" x="172" y="296">こたつ</text>
+  <text class="f sub" x="172" y="313">半径〇.八メートルの専守防衛の極北。圏内では無敵</text>
+  <text class="f scope" x="736" y="303" text-anchor="end">拠点</text>
+</g>
+<g>
+  <rect x="150" y="329" width="600" height="46" rx="3" fill="#111823" stroke="#1f2c3d" stroke-width="1.5"/>
+  <rect x="150" y="329" width="4" height="46" fill="#ffc233"/>
+  <text class="f no" x="120" y="358" text-anchor="end">第四</text>
+  <text class="f lbl" x="172" y="351">電気毛布</text>
+  <text class="f sub" x="172" y="368">自分という一立方メートルだけを温める、究極の選択と集中</text>
+  <text class="f scope" x="736" y="358" text-anchor="end">個</text>
+</g>
+
+<!-- 中心：体温 -->
+<rect x="330" y="392" width="240" height="40" rx="20" fill="#ffc233"/>
+<text class="f core" x="450" y="418" text-anchor="middle">我が体温</text>
+
+<text class="f note" x="450" y="462" text-anchor="middle">敵の寒気は、四重の防衛線をすべて突破せねば、ここへ到達できない</text>
+</svg>

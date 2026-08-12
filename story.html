@@ -65,6 +65,9 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .bar i{display:block;height:100%;width:0;background:var(--amber);transition:width .3s}
 
 /* ===== ステージ（背景＋立ち絵） ===== */
+/* ステージ＋テキスト枠をまとめた領域。カードはこの全体を覆うので、
+   図のときはテキスト枠のぶんまで使える（枠を出し入れしないのでレイアウトは動かない） */
+.viewport{flex:1;position:relative;display:flex;flex-direction:column;min-height:0}
 .stage{flex:1;position:relative;overflow:hidden;cursor:pointer;min-height:0;background:#080b0f}
 .stage .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.34;filter:saturate(.6)}
 .stage::after{content:"";position:absolute;inset:0;pointer-events:none;
@@ -82,6 +85,9 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
    うめはバストアップなので、松より小さく置かないと顔だけが画面を占領する。 */
 .cast.ume{right:5%;height:54%}
 .cast.matsu{left:6%;height:78%}
+/* 第三者（配達員・ご婦人・母など）。松と入れ替わりで同じ左に立つ。
+   別画風のバストアップで顔の比率が大きいため、うめより控えめに置く */
+.cast.guest{left:6%;height:48%}
 .cast.mugi{left:50%;height:36%;transform:translateX(-50%)}
 .cast[data-state="off"]{opacity:0;transform:translateY(14px)}
 .cast.mugi[data-state="off"]{transform:translateX(-50%) translateY(14px)}
@@ -89,9 +95,10 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .cast[data-state="on"]{opacity:1;filter:none}
 
 /* ステージ中央のカード（前書き・章見出し・総括・締め） */
-/* カード表示中は立ち絵が消えて背景だけが残るので、暗幕を敷いて文字を読みやすくする */
+/* カード表示中は立ち絵が消えて背景だけが残るので、暗幕を敷いて文字を読みやすくする。
+   z-index はステージの上下グラデーション（.stage::after）より前に出すため */
 .card{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:28px;
-  background:rgba(8,11,15,.62)}
+  background:rgba(8,11,15,.72);z-index:2;cursor:pointer}
 .card.show{display:flex;animation:cardin .5s ease both}
 @keyframes cardin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .card .inner{max-width:760px;width:100%;background:rgba(14,20,29,.94);border:1px solid var(--line);
@@ -108,6 +115,19 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .card.k-closing h2{font-size:calc(var(--fs-body) * 1.2);color:var(--amber)}
 .card.k-quote .kicker{color:var(--green)}
 .card.k-quote p{border-left:2px solid var(--line);padding-left:16px;font-weight:700}
+/* 図はそれ自体が枠と見出しを持つので、カード側の枠・余白は消して図を主役にする。
+   高さいっぱいに収めないと下が切れる */
+.card.k-figure{padding:14px}
+/* height:100% を与えないと、中身（図）の実寸で伸びてカードからはみ出す。
+   テキスト枠のぶんまで使えるので、図は大きめに置ける */
+.card.k-figure .inner{max-width:1180px;height:100%;padding:0;background:none;border:none;
+  display:flex;flex-direction:column;overflow:hidden}
+.card.k-figure .inner::before,.card.k-figure .inner::after{display:none}
+.card.k-figure .inner > a{display:flex;flex:1;min-height:0}
+.card.k-figure img{display:block;width:100%;height:100%;object-fit:contain}
+.card.k-figure .kicker{display:none}
+.figzoom{display:none;text-align:center;font-family:var(--mono);font-size:10px;
+  letter-spacing:.22em;color:var(--sub);margin-top:8px;flex:none}
 
 /* ===== テキストボックス ===== */
 /* 高さは文字サイズに連動。1ページの文字数はビューアがこの実寸から逆算するので、常に枠内に収まる */
@@ -141,6 +161,7 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .sheet h2{font-size:16px;font-weight:900;letter-spacing:.02em}
 .sheet .sub{font-size:calc(var(--fs-body) * .84);color:var(--sub);margin-top:8px;line-height:1.8}
 .sheet .scroll{overflow-y:auto;padding:8px 28px 20px}
+.sheet .scroll:empty{padding:0}
 .sheet footer{padding:16px 28px 22px;display:flex;gap:12px;flex-wrap:wrap;flex:none;border-top:1px solid var(--line)}
 /* タップがテキスト選択に化けて反応しないことがあるので、操作要素は選択不可にする */
 .btn,.tool,.jump{user-select:none;-webkit-user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -212,6 +233,13 @@ footer.site .back:hover{color:var(--amber)}
      むぎは中央より左に置いて右のうめと重ならないようにする */
   .cast.ume{height:42%;max-width:46%;right:0}
   .cast.matsu{height:56%;max-width:22%;left:1%}
+  .cast.guest{height:36%;max-width:36%;left:1%}
+  /* 狭い画面では図が縮んで文字が読めないので、拡大できることを明示する。
+     幅が制約になるぶん高さが余るので、図の高さは実寸に合わせてヒントを直下に置く */
+  .figzoom{display:block}
+  .card.k-figure .inner{justify-content:center}
+  .card.k-figure .inner > a{flex:0 0 auto}
+  .card.k-figure img{height:auto}
   .cast.mugi{height:22%;max-width:22%;left:36%}
   .textbox .inner{padding:14px 18px 18px}
   .body{line-height:1.9}
@@ -270,25 +298,30 @@ footer.site .back:hover{color:var(--amber)}
   </div>
   <div class="bar"><i id="progress"></i></div>
 
-  <div class="stage" id="stage">
-    <img class="bg" src="assets/story/bg-living.jpg" alt="">
-    <div class="gridbg"></div>
-    <img class="cast matsu" id="castMatsu" src="assets/story/matsu.png" alt="参謀・松" data-state="off">
-    <img class="cast mugi" id="castMugi" src="assets/story/mugi.png" alt="むぎ" data-state="off">
-    <img class="cast ume" id="castUme" src="assets/story/ume.png" alt="総司令官・うめ" data-state="off">
-    <div class="card" id="card"><div class="inner" id="cardInner"></div></div>
-  </div>
+  <!-- ステージとテキスト枠をまとめた領域。カードはこの全体に重なる（テキスト枠のぶんも図に使える） -->
+  <div class="viewport">
+    <div class="stage" id="stage">
+      <img class="bg" src="assets/story/bg-living.jpg" alt="">
+      <div class="gridbg"></div>
+      <img class="cast matsu" id="castMatsu" src="assets/story/matsu.png" alt="参謀・松" data-state="off">
+      <img class="cast guest" id="castGuest" alt="" data-state="off">
+      <img class="cast mugi" id="castMugi" src="assets/story/mugi.png" alt="むぎ" data-state="off">
+      <img class="cast ume" id="castUme" src="assets/story/ume.png" alt="総司令官・うめ" data-state="off">
+    </div>
 
-  <div class="textbox" id="textbox" style="--sp:var(--sp-narration)">
-    <div class="inner">
-      <div class="who" id="who"></div>
-      <div class="body" id="body"></div>
+    <div class="textbox" id="textbox" style="--sp:var(--sp-narration)">
+      <div class="inner">
+        <div class="who" id="who"></div>
+        <div class="body" id="body"></div>
+      </div>
+      <div class="nextmark" id="nextmark" aria-hidden="true">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="2.4">
+          <path d="M2 2l7 8 7-8"/>
+        </svg>
+      </div>
     </div>
-    <div class="nextmark" id="nextmark" aria-hidden="true">
-      <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="2.4">
-        <path d="M2 2l7 8 7-8"/>
-      </svg>
-    </div>
+
+    <div class="card" id="card"><div class="inner" id="cardInner"></div></div>
   </div>
 </main>
 
@@ -318,7 +351,7 @@ footer.site .back:hover{color:var(--amber)}
   var TYPE_SPEED = 26;          // 1文字あたりのミリ秒
   var AUTO_BASE = 900;          // 自動送りの基本待ち時間
   var AUTO_PER_CHAR = 42;       // 自動送りの文字数あたり追加待ち
-  var CARD_KINDS = {briefing:1, chapter:1, quote:1, closing:1};
+  var CARD_KINDS = {briefing:1, chapter:1, quote:1, closing:1, figure:1};
 
   var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -349,7 +382,8 @@ footer.site .back:hover{color:var(--amber)}
     cast: {
       ume: document.getElementById('castUme'),
       matsu: document.getElementById('castMatsu'),
-      mugi: document.getElementById('castMugi')
+      mugi: document.getElementById('castMugi'),
+      guest: document.getElementById('castGuest')
     }
   };
 
@@ -487,7 +521,12 @@ footer.site .back:hover{color:var(--amber)}
   }
 
   /* ---------- 立ち絵 ---------- */
-  function applyCast(cast){
+  function applyCast(cast, guest){
+    // ゲスト枠は作品ごとに中身が変わる（配達員・ご婦人・母…）ので、出す直前に差し替える
+    if (guest && el.cast.guest.dataset.name !== guest){
+      el.cast.guest.src = 'assets/story/cast/' + guest + '.png';
+      el.cast.guest.dataset.name = guest;
+    }
     for (var key in el.cast){
       if (!el.cast.hasOwnProperty(key)) continue;
       el.cast[key].dataset.state = (cast && cast[key]) ? cast[key] : 'off';
@@ -568,6 +607,28 @@ footer.site .back:hover{color:var(--amber)}
       for (var j = 0; j < sc.lines.length; j++){
         appendSegments(inner.appendChild(document.createElement('p')), sc.lines[j]);
       }
+    } else if (sc.kind === 'figure'){
+      kicker.textContent = 'FIGURE';
+      inner.appendChild(kicker);
+      // 図そのものが見出しを持っているので、キャプションは画面には出さず alt と LOG に回す。
+      // 狭い画面では縮みすぎて文字が読めないため、別タブで原寸を開けるようにする
+      var img = document.createElement('img');
+      img.src = sc.src;
+      img.alt = sc.alt || sc.caption || '';
+
+      var link = document.createElement('a');
+      link.href = sc.src;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.title = '図を大きく表示';
+      link.addEventListener('click', function(e){ e.stopPropagation(); });
+      link.appendChild(img);
+      inner.appendChild(link);
+
+      var zoom = document.createElement('p');
+      zoom.className = 'figzoom';
+      zoom.textContent = 'TAP TO ENLARGE';
+      inner.appendChild(zoom);
     } else {
       kicker.textContent = 'END OF FILE';
       inner.appendChild(kicker);
@@ -592,7 +653,7 @@ footer.site .back:hover{color:var(--amber)}
   /* ---------- シーン描画 ---------- */
   function renderScene(){
     var sc = scenes[pos];
-    applyCast(sc.cast);
+    applyCast(sc.cast, sc.guest);
 
     var chapter = null;
     for (var i = 0; i < data.chapters.length; i++){
@@ -688,13 +749,6 @@ footer.site .back:hover{color:var(--amber)}
     var saved = load();
     openSheet(labelOf(data), data.title, data.subtitle);
 
-    var hint = document.createElement('div');
-    hint.className = 'hint';
-    hint.textContent = 'クリック / タップ / スペースキーで読み進めます。'
-      + '左右キーで戻る・進む。INDEX で章送り、LOG で読み返し。'
-      + '文字が小さいときは、画面上の「文字」ボタンで 小 → 中 → 大 に変えられます。';
-    el.sheetBody.appendChild(hint);
-
     if (saved && saved.pos > 0 && saved.pos < scenes.length){
       addButton('続きから読む', 'btn-amber', function(){
         maxSeen = Math.max(saved.maxSeen || 0, saved.pos);
@@ -753,6 +807,7 @@ footer.site .back:hover{color:var(--amber)}
       if (sc.segments) appendSegments(row, sc.segments);
       else if (sc.text) row.appendChild(document.createTextNode(sc.text));
       else if (sc.lines) sc.lines.forEach(function(p){ appendSegments(row, p); });
+      else if (sc.caption) row.appendChild(document.createTextNode('［図］' + sc.caption));
 
       el.sheetBody.appendChild(row);
       shown++;
@@ -858,6 +913,8 @@ footer.site .back:hover{color:var(--amber)}
   /* ---------- イベント ---------- */
   el.stage.addEventListener('click', function(){ if (started) advance(); });
   el.textbox.addEventListener('click', function(){ if (started) advance(); });
+  // カードはステージとテキスト枠の上に重なるので、送りは自前で受ける
+  el.card.addEventListener('click', function(){ if (started) advance(); });
 
   el.btnSize.addEventListener('click', function(e){ e.stopPropagation(); applySize(sizeIdx + 1, true); });
   el.btnIndex.addEventListener('click', function(e){ e.stopPropagation(); openIndex(); });
