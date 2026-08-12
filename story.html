@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>機密ファイル No.0037〈絶対防衛圏〉 — うめンち物語</title>
+<meta name="description" content="うめンち司令部の機密ファイルを、立ち絵と会話で読む読み物版。作戦〈絶対防衛圏〉——寒波籠城72時間の全記録。">
+<meta property="og:title" content="機密ファイル No.0037〈絶対防衛圏〉 — うめンち物語">
+<meta property="og:description" content="最強の暖房は四本足だった。寒波籠城72時間の全記録を、立ち絵と会話で読む。">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0f14'/%3E%3Crect x='6' y='6' width='20' height='20' fill='none' stroke='%23ffc233' stroke-width='3'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23ffc233'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f14; --panel:#111823; --panel2:#0e141d; --line:#1f2c3d;
+  --amber:#ffc233; --amber-d:#e09c00; --green:#3ddc84; --red:#ff5252;
+  --txt:#e8edf4; --sub:#8fa1b8; --mono:'Share Tech Mono',monospace;
+  /* 話者色は Final Cut 版のテロップ縁取り色に対応させる（地の文の黒だけは暗背景で使えないため置換） */
+  --sp-ume:#ff5252; --sp-matsu:#3ddc84; --sp-mugi:#b07cff; --sp-tv:#6aa8ff; --sp-narration:#8fa1b8;
+  --nav-h:54px;
+}
+/* 本文の文字サイズ（小・中・大）。文字を大きくするぶんテキスト枠を高くし、
+   その差だけステージが縮む。立ち絵はステージ高さに対する % 指定なので、一緒に縮んで欠けない。 */
+:root,:root[data-size="s"]{--fs-body:16.5px;--tb-h:200px}
+:root[data-size="m"]{--fs-body:19.5px;--tb-h:266px}
+:root[data-size="l"]{--fs-body:23px;--tb-h:334px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:'Zen Kaku Gothic New',sans-serif;line-height:1.9;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+
+/* ===== ナビ（他ページからの複製） ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,15,20,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:var(--nav-h)}
+nav .brand{font-weight:900;letter-spacing:.08em;font-size:15px;text-decoration:none;color:var(--txt)}
+nav .brand b{color:var(--amber)}
+nav .links{display:flex;gap:22px;font-family:var(--mono);font-size:12px;letter-spacing:.12em}
+nav .links a{color:var(--sub);text-decoration:none;transition:.2s}
+nav .links a:hover,nav .links a.active{color:var(--amber)}
+@media(max-width:760px){nav .links{display:none}}
+
+/* ===== リーダー全体 ===== */
+.reader{margin-top:var(--nav-h);height:calc(100vh - var(--nav-h));height:calc(100dvh - var(--nav-h));
+  display:flex;flex-direction:column;position:relative;user-select:none}
+
+/* 上部バー */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:9px 20px;border-bottom:1px solid var(--line);background:var(--panel2);flex:none}
+.topbar .ch{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--amber);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .ch span{color:var(--sub);margin-right:10px}
+.tools{display:flex;align-items:center;gap:8px;flex:none}
+.tool{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--sub);background:none;
+  border:1px solid var(--line);padding:5px 11px;cursor:pointer;transition:.2s;line-height:1}
+.tool:hover{color:var(--amber);border-color:var(--amber)}
+.tool[aria-pressed="true"]{color:#141413;background:var(--amber);border-color:var(--amber)}
+.count{font-family:var(--mono);font-size:11px;color:var(--sub);letter-spacing:.1em;min-width:74px;text-align:right}
+.bar{height:2px;background:var(--line);flex:none}
+.bar i{display:block;height:100%;width:0;background:var(--amber);transition:width .3s}
+
+/* ===== ステージ（背景＋立ち絵） ===== */
+.stage{flex:1;position:relative;overflow:hidden;cursor:pointer;min-height:0;background:#080b0f}
+.stage .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.34;filter:saturate(.6)}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(11,15,20,.7) 0%,rgba(11,15,20,.15) 34%,rgba(11,15,20,.8) 100%)}
+.stage .gridbg{position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(rgba(255,194,51,.05) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,194,51,.05) 1px,transparent 1px);
+  background-size:44px 44px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 78%)}
+
+.cast{position:absolute;bottom:0;transition:opacity .35s ease,filter .35s ease,transform .35s ease;
+  transform-origin:bottom center;pointer-events:none;will-change:opacity,filter;
+  /* 幅と高さの両方に制約がかかっても画像が歪まないようにする（狭い画面で max-width が効く） */
+  object-fit:contain;object-position:bottom center}
+/* 大きさの比は Final Cut 版の scale（うめ .45 / 松 .64 / むぎ 1.0）に合わせている。
+   うめはバストアップなので、松より小さく置かないと顔だけが画面を占領する。 */
+.cast.ume{right:5%;height:54%}
+.cast.matsu{left:6%;height:78%}
+.cast.mugi{left:50%;height:36%;transform:translateX(-50%)}
+.cast[data-state="off"]{opacity:0;transform:translateY(14px)}
+.cast.mugi[data-state="off"]{transform:translateX(-50%) translateY(14px)}
+.cast[data-state="dim"]{opacity:.95;filter:brightness(.42) saturate(.6) contrast(.95)}
+.cast[data-state="on"]{opacity:1;filter:none}
+
+/* ステージ中央のカード（前書き・章見出し・総括・締め） */
+/* カード表示中は立ち絵が消えて背景だけが残るので、暗幕を敷いて文字を読みやすくする */
+.card{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:28px;
+  background:rgba(8,11,15,.62)}
+.card.show{display:flex;animation:cardin .5s ease both}
+@keyframes cardin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card .inner{max-width:760px;width:100%;background:rgba(14,20,29,.94);border:1px solid var(--line);
+  padding:32px 34px;position:relative;max-height:100%;overflow-y:auto}
+.card .inner::before,.card .inner::after{content:"";position:absolute;width:16px;height:16px;border:2px solid var(--amber)}
+.card .inner::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
+.card .inner::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
+.card .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--amber);margin-bottom:14px}
+.card h2{font-size:calc(var(--fs-body) * 1.4);font-weight:900;letter-spacing:.03em;line-height:1.65;margin-bottom:6px}
+.card p{font-size:calc(var(--fs-body) * .92);color:#cfd9e6;margin-top:12px}
+.card p:first-of-type{margin-top:0}
+.card.k-chapter .inner{text-align:center;border-color:var(--amber)}
+.card.k-closing .inner{text-align:center}
+.card.k-closing h2{font-size:calc(var(--fs-body) * 1.2);color:var(--amber)}
+.card.k-quote .kicker{color:var(--green)}
+.card.k-quote p{border-left:2px solid var(--line);padding-left:16px;font-weight:700}
+
+/* ===== テキストボックス ===== */
+/* 高さは文字サイズに連動。1ページの文字数はビューアがこの実寸から逆算するので、常に枠内に収まる */
+.textbox{flex:none;height:var(--tb-h);background:var(--panel);
+  border-top:1px solid var(--line);position:relative;cursor:pointer;display:flex;flex-direction:column}
+.textbox::before{content:"";position:absolute;top:-1px;left:0;width:100%;height:2px;background:var(--sp);opacity:.85}
+.textbox .inner{max-width:1020px;width:100%;margin:0 auto;padding:18px 26px 20px;flex:1;display:flex;flex-direction:column;min-height:0}
+.who{font-family:var(--mono);font-size:calc(var(--fs-body) * .73);letter-spacing:.2em;color:var(--sp);
+  margin-bottom:9px;flex:none;min-height:1.55em}
+.who b{font-family:'Zen Kaku Gothic New',sans-serif;font-size:calc(var(--fs-body) * .91);font-weight:900;letter-spacing:.04em;margin-right:9px}
+.body{font-size:var(--fs-body);line-height:1.95;flex:1;overflow-y:auto;min-height:0;padding-right:6px}
+.body em{font-style:normal;font-weight:900;color:var(--amber)}
+.k-narration .body{color:#c8d3e0}
+.k-narration .body em{color:#ffd97a}
+.nextmark{position:absolute;right:22px;bottom:12px;color:var(--amber);opacity:0;transition:opacity .25s}
+.nextmark.show{opacity:.9;animation:bob 1.3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* ===== オーバーレイ（タイトル / 目次 / ログ） ===== */
+.overlay{position:fixed;inset:0;z-index:60;background:rgba(8,11,15,.93);backdrop-filter:blur(4px);
+  display:none;align-items:center;justify-content:center;padding:24px}
+.overlay.show{display:flex}
+.sheet{background:var(--panel);border:1px solid var(--line);max-width:720px;width:100%;
+  max-height:84vh;display:flex;flex-direction:column;position:relative}
+.sheet::before,.sheet::after{content:"";position:absolute;width:16px;height:16px;border:2px solid var(--amber)}
+.sheet::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
+.sheet::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
+.sheet header{padding:22px 28px 14px;border-bottom:1px solid var(--line);flex:none}
+.sheet .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--amber);margin-bottom:8px}
+.sheet h1{font-size:26px;font-weight:900;letter-spacing:.04em;line-height:1.5}
+.sheet h2{font-size:16px;font-weight:900;letter-spacing:.02em}
+.sheet .sub{font-size:calc(var(--fs-body) * .84);color:var(--sub);margin-top:8px;line-height:1.8}
+.sheet .scroll{overflow-y:auto;padding:8px 28px 20px}
+.sheet footer{padding:16px 28px 22px;display:flex;gap:12px;flex-wrap:wrap;flex:none;border-top:1px solid var(--line)}
+/* タップがテキスト選択に化けて反応しないことがあるので、操作要素は選択不可にする */
+.btn,.tool,.jump{user-select:none;-webkit-user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;font-size:14px;font-weight:700;
+  text-decoration:none;cursor:pointer;transition:.2s;letter-spacing:.06em;border:none;font-family:inherit}
+.btn-amber{background:var(--amber);color:#141413;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.btn-amber:hover{background:#ffd24d}
+.btn-ghost{color:var(--amber);border:1px solid var(--amber);background:none;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.btn-ghost:hover{background:rgba(255,194,51,.1)}
+.jump{display:block;width:100%;text-align:left;background:none;border:none;border-bottom:1px solid var(--line);
+  padding:13px 4px;color:var(--txt);cursor:pointer;font-family:inherit;font-size:calc(var(--fs-body) * .88);transition:.2s;line-height:1.7}
+.jump:hover{color:var(--amber);padding-left:10px}
+.jump .no{font-family:var(--mono);font-size:11px;color:var(--sub);letter-spacing:.18em;margin-right:12px}
+.jump.done .no{color:var(--green)}
+.logrow{padding:12px 4px;border-bottom:1px solid var(--line);font-size:calc(var(--fs-body) * .88);line-height:1.85}
+.logrow .who2{font-family:var(--mono);font-size:11px;letter-spacing:.16em;display:block;margin-bottom:3px}
+.logrow em{font-style:normal;font-weight:900;color:var(--amber)}
+.logrow.n{color:#b9c5d4}
+
+footer.site{padding:34px 0;text-align:center;font-family:var(--mono);font-size:12px;color:var(--sub);
+  border-top:1px solid var(--line);letter-spacing:.15em}
+footer.site b{color:var(--amber)}
+footer.site .back{color:var(--sub);text-decoration:none;letter-spacing:.1em}
+footer.site .back:hover{color:var(--amber)}
+
+.hint{font-family:var(--mono);font-size:calc(var(--fs-body) * .76);color:var(--sub);letter-spacing:.1em;margin-top:14px;line-height:2}
+
+@media(max-width:760px){
+  /* 狭い画面では同じ pt でも読み幅が短いので、各段を少し控えめにする */
+  :root,:root[data-size="s"]{--fs-body:15px;--tb-h:190px}
+  :root[data-size="m"]{--fs-body:17.5px;--tb-h:248px}
+  :root[data-size="l"]{--fs-body:20.5px;--tb-h:312px}
+  .topbar{padding:8px 14px}
+  .topbar .ch{font-size:11px}
+  .tool{padding:5px 8px;font-size:10px}
+  .count{min-width:62px;font-size:10px}
+  /* 縦長の画面ではステージが細くなるので、高さと幅の両方を抑え、
+     むぎは中央より左に置いて右のうめと重ならないようにする */
+  .cast.ume{height:42%;max-width:46%;right:0}
+  .cast.matsu{height:56%;max-width:22%;left:1%}
+  .cast.mugi{height:22%;max-width:22%;left:36%}
+  .textbox .inner{padding:14px 18px 18px}
+  .body{line-height:1.9}
+  .card .inner{padding:24px 20px}
+  .card h2{font-size:calc(var(--fs-body) * 1.25)}
+  .sheet h1{font-size:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  .cast,.bar i{transition:none}
+  .nextmark.show{animation:none}
+  .card.show{animation:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html#top">UMENCHI <b>FORTRESS</b></a>
+    <div class="links">
+      <a href="index.html#spec">SPEC</a>
+      <a href="index.html#files">ARCHIVE</a>
+      <a href="story.html" class="active">STORY</a>
+      <a href="index.html#videos">VIDEOS</a>
+      <a href="index.html#status">STATUS</a>
+      <a href="index.html#threats">THREATS</a>
+      <a href="arsenal.html">ARSENAL</a>
+      <a href="index.html#channels">COMMS</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+  </div>
+</nav>
+
+<main class="reader" id="reader">
+  <div class="topbar">
+    <div class="ch" id="chLabel"><span>CH.--</span>読み込み中</div>
+    <div class="tools">
+      <button class="tool" id="btnSize" type="button" title="文字サイズを変える">文字 小</button>
+      <button class="tool" id="btnIndex" type="button">INDEX</button>
+      <button class="tool" id="btnLog" type="button">LOG</button>
+      <button class="tool" id="btnAuto" type="button" aria-pressed="false">AUTO</button>
+      <span class="count" id="count">--- / ---</span>
+    </div>
+  </div>
+  <div class="bar"><i id="progress"></i></div>
+
+  <div class="stage" id="stage">
+    <img class="bg" src="assets/story/bg-living.jpg" alt="">
+    <div class="gridbg"></div>
+    <img class="cast matsu" id="castMatsu" src="assets/story/matsu.png" alt="参謀・松" data-state="off">
+    <img class="cast mugi" id="castMugi" src="assets/story/mugi.png" alt="むぎ" data-state="off">
+    <img class="cast ume" id="castUme" src="assets/story/ume.png" alt="総司令官・うめ" data-state="off">
+    <div class="card" id="card"><div class="inner" id="cardInner"></div></div>
+  </div>
+
+  <div class="textbox" id="textbox" style="--sp:var(--sp-narration)">
+    <div class="inner">
+      <div class="who" id="who"></div>
+      <div class="body" id="body"></div>
+    </div>
+    <div class="nextmark" id="nextmark" aria-hidden="true">
+      <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="2.4">
+        <path d="M2 2l7 8 7-8"/>
+      </svg>
+    </div>
+  </div>
+</main>
+
+<div class="overlay" id="overlay">
+  <div class="sheet">
+    <header>
+      <div class="kicker" id="sheetKicker">CLASSIFIED</div>
+      <h1 id="sheetTitle">読み込み中</h1>
+      <div class="sub" id="sheetSub"></div>
+    </header>
+    <div class="scroll" id="sheetBody"></div>
+    <footer id="sheetFoot"></footer>
+  </div>
+</div>
+
+<footer class="site">
+  UMENCHI FORTRESS COMMAND — <b>家芸人うめ</b> / CLASSIFIED FILE ARCHIVE
+  <br><a class="back" href="index.html#top">&lt;- 司令部トップに戻る</a>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  var STORY_ID = 'zettai-boueiken';
+  var SRC = 'data/stories/' + STORY_ID + '.json';
+  var TYPE_SPEED = 26;          // 1文字あたりのミリ秒
+  var AUTO_BASE = 900;          // 自動送りの基本待ち時間
+  var AUTO_PER_CHAR = 42;       // 自動送りの文字数あたり追加待ち
+  var CARD_KINDS = {briefing:1, chapter:1, quote:1, closing:1};
+
+  var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var el = {
+    reader: document.getElementById('reader'),
+    chLabel: document.getElementById('chLabel'),
+    count: document.getElementById('count'),
+    progress: document.getElementById('progress'),
+    stage: document.getElementById('stage'),
+    card: document.getElementById('card'),
+    cardInner: document.getElementById('cardInner'),
+    textbox: document.getElementById('textbox'),
+    who: document.getElementById('who'),
+    body: document.getElementById('body'),
+    nextmark: document.getElementById('nextmark'),
+    overlay: document.getElementById('overlay'),
+    sheetKicker: document.getElementById('sheetKicker'),
+    sheetTitle: document.getElementById('sheetTitle'),
+    sheetSub: document.getElementById('sheetSub'),
+    sheetBody: document.getElementById('sheetBody'),
+    sheetFoot: document.getElementById('sheetFoot'),
+    btnSize: document.getElementById('btnSize'),
+    btnIndex: document.getElementById('btnIndex'),
+    btnLog: document.getElementById('btnLog'),
+    btnAuto: document.getElementById('btnAuto'),
+    cast: {
+      ume: document.getElementById('castUme'),
+      matsu: document.getElementById('castMatsu'),
+      mugi: document.getElementById('castMugi')
+    }
+  };
+
+  var data = null, scenes = [], pos = 0, page = 0, maxSeen = 0;
+  var pages = [];               // 現在のシーンをテキスト枠の実寸で割ったページ列
+  var typing = false, typeTimer = null, autoTimer = null, auto = false, started = false;
+
+  /* ---------- 文字サイズ ---------- */
+  var SIZES = ['s', 'm', 'l'];
+  var SIZE_LABEL = {s: '小', m: '中', l: '大'};
+  var SIZE_KEY = 'umench-story:size';
+  var sizeIdx = 0;
+
+  function applySize(idx, redraw){
+    sizeIdx = (idx + SIZES.length) % SIZES.length;
+    var name = SIZES[sizeIdx];
+    document.documentElement.dataset.size = name;
+    el.btnSize.textContent = '文字 ' + SIZE_LABEL[name];
+    el.btnSize.title = '文字サイズ: ' + SIZE_LABEL[name] + '（押すと切り替え）';
+    try { localStorage.setItem(SIZE_KEY, name); } catch(e){}
+    if (redraw) repaginate();
+  }
+
+  /* ---------- ページ分割（テキスト枠の実寸から逆算する） ---------- */
+  function charsPerPage(){
+    var cs = getComputedStyle(el.body);
+    var fs = parseFloat(cs.fontSize) || 16;
+    var lh = parseFloat(cs.lineHeight) || fs * 1.95;
+    var w = el.body.clientWidth || 600;
+    var h = el.body.clientHeight || 120;
+    // 日本語は全角なので 1文字 ≒ 1em として数える
+    var perLine = Math.max(6, Math.floor(w / fs));
+    var lines = Math.max(1, Math.floor(h / lh));
+    // 行頭禁則や半角混在ではみ出すぶん、半行ぶん余裕を残す
+    return Math.max(24, perLine * lines - Math.ceil(perLine / 2));
+  }
+
+  function splitLengths(text, limit){
+    var pieces = [], buf = '', i;
+    for (i = 0; i < text.length; i++){
+      buf += text.charAt(i);
+      if ('。！？'.indexOf(text.charAt(i)) >= 0){ pieces.push(buf); buf = ''; }
+    }
+    if (buf) pieces.push(buf);
+
+    // 1文が枠に収まらない場合だけ読点でさらに割る
+    var fine = [];
+    for (i = 0; i < pieces.length; i++){
+      if (pieces[i].length <= limit){ fine.push(pieces[i]); continue; }
+      var b = '';
+      for (var k = 0; k < pieces[i].length; k++){
+        b += pieces[i].charAt(k);
+        if (pieces[i].charAt(k) === '、'){ fine.push(b); b = ''; }
+      }
+      if (b) fine.push(b);
+    }
+
+    var out = [], cur = '';
+    for (i = 0; i < fine.length; i++){
+      if (!cur) cur = fine[i];
+      else if (cur.length + fine[i].length <= limit) cur += fine[i];
+      else { out.push(cur.length); cur = fine[i]; }
+      while (cur.length > limit){ out.push(limit); cur = cur.slice(limit); }
+    }
+    if (cur) out.push(cur.length);
+    return out;
+  }
+
+  function sliceSegments(segs, start, end){
+    var out = [], pos2 = 0;
+    for (var i = 0; i < segs.length; i++){
+      var a = pos2, b = pos2 + segs[i].t.length;
+      pos2 = b;
+      var from = Math.max(a, start), to = Math.min(b, end);
+      if (from < to) out.push({t: segs[i].t.slice(from - a, to - a), b: segs[i].b});
+    }
+    return out;
+  }
+
+  function computePages(segs){
+    var text = segsText(segs);
+    var limit = charsPerPage();
+    if (text.length <= limit) return [segs];
+    var lens = splitLengths(text, limit);
+    var out = [], start = 0;
+    for (var i = 0; i < lens.length; i++){
+      out.push(sliceSegments(segs, start, start + lens[i]));
+      start += lens[i];
+    }
+    return out;
+  }
+
+  // 文字サイズ変更・画面リサイズのあと、今のシーンを割り直して出し直す
+  function repaginate(){
+    if (!started || !scenes.length) return;
+    var sc = scenes[pos];
+    if (CARD_KINDS[sc.kind]) return;
+    stopTyping();
+    clearAuto();
+    pages = computePages(sc.segments);
+    page = Math.min(page, pages.length - 1);
+    showPage();
+  }
+
+  /* ---------- 保存（続きから） ---------- */
+  var KEY = 'umench-story:' + STORY_ID;
+  function save(){
+    try { localStorage.setItem(KEY, JSON.stringify({pos: pos, maxSeen: maxSeen})); } catch(e){}
+  }
+  function load(){
+    try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e){ return null; }
+  }
+
+  /* ---------- セグメント → DOM ---------- */
+  function appendSegments(target, segs){
+    for (var i = 0; i < segs.length; i++){
+      if (segs[i].b){
+        var em = document.createElement('em');
+        em.textContent = segs[i].t;
+        target.appendChild(em);
+      } else {
+        target.appendChild(document.createTextNode(segs[i].t));
+      }
+    }
+    return target;
+  }
+  function segsText(segs){
+    var s = '';
+    for (var i = 0; i < segs.length; i++) s += segs[i].t;
+    return s;
+  }
+
+  /* ---------- 立ち絵 ---------- */
+  function applyCast(cast){
+    for (var key in el.cast){
+      if (!el.cast.hasOwnProperty(key)) continue;
+      el.cast[key].dataset.state = (cast && cast[key]) ? cast[key] : 'off';
+    }
+  }
+
+  /* ---------- タイプライター ---------- */
+  function stopTyping(){
+    if (typeTimer){ clearInterval(typeTimer); typeTimer = null; }
+    typing = false;
+  }
+  // タイプ演出を飛ばして現在ページを出し切る
+  function showPage(){
+    stopTyping();
+    var segs = pages[page] || [];
+    el.body.textContent = '';
+    appendSegments(el.body, segs);
+    el.nextmark.classList.add('show');
+    scheduleAuto(segsText(segs).length);
+  }
+  function typePage(){
+    stopTyping();
+    clearAuto();
+    var segs = pages[page] || [];
+    el.body.textContent = '';
+    el.nextmark.classList.remove('show');
+
+    if (noMotion){ showPage(); return; }
+
+    var nodes = [];
+    for (var i = 0; i < segs.length; i++){
+      var node = segs[i].b ? document.createElement('em') : document.createElement('span');
+      el.body.appendChild(node);
+      nodes.push({node: node, text: segs[i].t, at: 0});
+    }
+    typing = true;
+    var si = 0;
+    typeTimer = setInterval(function(){
+      while (si < nodes.length && nodes[si].at >= nodes[si].text.length) si++;
+      if (si >= nodes.length){ showPage(); return; }
+      var n = nodes[si];
+      n.node.textContent += n.text.charAt(n.at++);
+    }, TYPE_SPEED);
+  }
+
+  /* ---------- 自動送り ---------- */
+  function clearAuto(){ if (autoTimer){ clearTimeout(autoTimer); autoTimer = null; } }
+  function scheduleAuto(len){
+    clearAuto();
+    if (!auto || el.overlay.classList.contains('show')) return;
+    autoTimer = setTimeout(function(){ advance(); }, AUTO_BASE + len * AUTO_PER_CHAR);
+  }
+
+  /* ---------- カード表示 ---------- */
+  function renderCard(sc){
+    var inner = el.cardInner;
+    inner.textContent = '';
+    el.card.className = 'card show k-' + sc.kind;
+
+    var kicker = document.createElement('div');
+    kicker.className = 'kicker';
+
+    if (sc.kind === 'chapter'){
+      kicker.textContent = 'CHAPTER ' + ('0' + sc.ch).slice(-2);
+      inner.appendChild(kicker);
+      var h = document.createElement('h2');
+      h.textContent = sc.text;
+      inner.appendChild(h);
+    } else if (sc.kind === 'briefing'){
+      kicker.textContent = 'CLASSIFIED — 機密解除';
+      inner.appendChild(kicker);
+      for (var i = 0; i < sc.lines.length; i++){
+        appendSegments(inner.appendChild(document.createElement('p')), sc.lines[i]);
+      }
+    } else if (sc.kind === 'quote'){
+      kicker.textContent = 'SUMMARY — 総括';
+      inner.appendChild(kicker);
+      for (var j = 0; j < sc.lines.length; j++){
+        appendSegments(inner.appendChild(document.createElement('p')), sc.lines[j]);
+      }
+    } else {
+      kicker.textContent = 'END OF FILE';
+      inner.appendChild(kicker);
+      appendSegments(inner.appendChild(document.createElement('h2')), sc.segments);
+    }
+
+    pages = [];
+    page = 0;
+
+    // テキスト枠は出し入れせず空にするだけ。display を切り替えるとステージの高さが変わり、
+    // 高さ比で置いている立ち絵のサイズが跳ねてしまう
+    el.textbox.className = 'textbox k-narration';
+    el.textbox.style.setProperty('--sp', 'var(--sp-narration)');
+    el.who.textContent = '';
+    el.body.textContent = '';
+    el.nextmark.classList.remove('show');
+
+    clearAuto();
+    if (auto) scheduleAuto(40);
+  }
+
+  /* ---------- シーン描画 ---------- */
+  function renderScene(){
+    var sc = scenes[pos];
+    applyCast(sc.cast);
+
+    var chapter = null;
+    for (var i = 0; i < data.chapters.length; i++){
+      if (data.chapters[i].index === sc.ch) chapter = data.chapters[i];
+    }
+    el.chLabel.textContent = '';
+    var tag = document.createElement('span');
+    tag.textContent = chapter ? 'CH.' + ('0' + chapter.index).slice(-2) : 'FILE';
+    el.chLabel.appendChild(tag);
+    el.chLabel.appendChild(document.createTextNode(chapter ? chapter.short : data.title));
+
+    el.count.textContent = ('00' + (pos + 1)).slice(-3) + ' / ' + scenes.length;
+    el.progress.style.width = ((pos + 1) / scenes.length * 100) + '%';
+
+    if (CARD_KINDS[sc.kind]){ renderCard(sc); return; }
+
+    el.card.className = 'card';
+    el.textbox.className = 'textbox k-' + sc.kind;
+
+    var color = 'var(--sp-' + (sc.speaker || 'narration') + ')';
+    el.textbox.style.setProperty('--sp', color);
+
+    el.who.textContent = '';
+    if (sc.kind === 'dialog'){
+      var spec = data.speakers[sc.speaker] || {name: sc.speaker, role: ''};
+      var b = document.createElement('b');
+      b.textContent = spec.name;
+      el.who.appendChild(b);
+      if (spec.role) el.who.appendChild(document.createTextNode(spec.role));
+    }
+
+    // 枠の実寸が確定してから割る（文字サイズ・画面幅が変われば結果も変わる）
+    pages = computePages(sc.segments);
+    page = 0;
+    typePage();
+  }
+
+  /* ---------- 進行 ---------- */
+  function goto(i){
+    if (i < 0 || i >= scenes.length) return;
+    stopTyping();
+    clearAuto();
+    pos = i;
+    page = 0;
+    if (pos > maxSeen) maxSeen = pos;
+    save();
+    renderScene();
+  }
+  function advance(){
+    if (typing){ showPage(); return; }
+    if (page < pages.length - 1){
+      page++;
+      save();
+      typePage();
+      return;
+    }
+    if (pos >= scenes.length - 1){ openEnd(); return; }
+    goto(pos + 1);
+  }
+  function back(){
+    if (page > 0){ page--; typePage(); return; }
+    goto(pos - 1);
+  }
+
+  /* ---------- オーバーレイ ---------- */
+  function closeOverlay(){
+    el.overlay.classList.remove('show');
+    if (started && auto) scheduleAuto(20);
+  }
+  function openSheet(kicker, title, sub){
+    clearAuto();
+    el.sheetKicker.textContent = kicker;
+    el.sheetTitle.textContent = title;
+    el.sheetSub.textContent = sub || '';
+    el.sheetBody.textContent = '';
+    el.sheetFoot.textContent = '';
+    el.overlay.classList.add('show');
+  }
+  function addButton(label, cls, fn){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'btn ' + cls;
+    b.textContent = label;
+    b.addEventListener('click', fn);
+    el.sheetFoot.appendChild(b);
+    return b;
+  }
+
+  function openTitle(){
+    var saved = load();
+    openSheet('CLASSIFIED FILE No.' + data.no, data.title, data.subtitle);
+
+    var hint = document.createElement('div');
+    hint.className = 'hint';
+    hint.textContent = 'クリック / タップ / スペースキーで読み進めます。'
+      + '左右キーで戻る・進む。INDEX で章送り、LOG で読み返し。'
+      + '文字が小さいときは、画面上の「文字」ボタンで 小 → 中 → 大 に変えられます。';
+    el.sheetBody.appendChild(hint);
+
+    if (saved && saved.pos > 0 && saved.pos < scenes.length){
+      addButton('続きから読む', 'btn-amber', function(){
+        maxSeen = Math.max(saved.maxSeen || 0, saved.pos);
+        started = true; closeOverlay(); goto(saved.pos);
+      });
+      addButton('最初から読む', 'btn-ghost', function(){
+        started = true; closeOverlay(); goto(0);
+      });
+    } else {
+      addButton('読み始める', 'btn-amber', function(){
+        started = true; closeOverlay(); goto(0);
+      });
+    }
+  }
+
+  function openIndex(){
+    openSheet('INDEX', '目次', data.title + '（機密ファイル No.' + data.no + '）');
+    data.chapters.forEach(function(c){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'jump' + (c.scene <= maxSeen ? ' done' : '');
+      var no = document.createElement('span');
+      no.className = 'no';
+      no.textContent = 'CH.' + ('0' + c.index).slice(-2);
+      b.appendChild(no);
+      b.appendChild(document.createTextNode(c.full));
+      b.addEventListener('click', function(){ started = true; closeOverlay(); goto(c.scene); });
+      el.sheetBody.appendChild(b);
+    });
+    addButton('閉じる', 'btn-ghost', closeOverlay);
+  }
+
+  function openLog(){
+    openSheet('LOG', 'これまでの記録', '読んだところまでを振り返れます。');
+    var shown = 0;
+    for (var i = 0; i <= maxSeen && i < scenes.length; i++){
+      var sc = scenes[i];
+      var row = document.createElement('div');
+      row.className = 'logrow' + (sc.kind === 'dialog' ? '' : ' n');
+
+      if (sc.kind === 'dialog'){
+        var spec = data.speakers[sc.speaker] || {name: sc.speaker};
+        var w = document.createElement('span');
+        w.className = 'who2';
+        w.style.color = 'var(--sp-' + sc.speaker + ')';
+        w.textContent = spec.name;
+        row.appendChild(w);
+      } else if (sc.kind === 'chapter'){
+        var w2 = document.createElement('span');
+        w2.className = 'who2';
+        w2.style.color = 'var(--amber)';
+        w2.textContent = 'CHAPTER ' + ('0' + sc.ch).slice(-2);
+        row.appendChild(w2);
+      }
+
+      if (sc.segments) appendSegments(row, sc.segments);
+      else if (sc.text) row.appendChild(document.createTextNode(sc.text));
+      else if (sc.lines) sc.lines.forEach(function(p){ appendSegments(row, p); });
+
+      el.sheetBody.appendChild(row);
+      shown++;
+    }
+    if (!shown){
+      var p = document.createElement('div');
+      p.className = 'hint';
+      p.textContent = 'まだ記録がありません。';
+      el.sheetBody.appendChild(p);
+    }
+    addButton('閉じる', 'btn-ghost', closeOverlay);
+    requestAnimationFrame(function(){ el.sheetBody.scrollTop = el.sheetBody.scrollHeight; });
+  }
+
+  function openEnd(){
+    openSheet('END OF FILE', '読了', data.title + '（機密ファイル No.' + data.no + '）');
+    var hint = document.createElement('div');
+    hint.className = 'hint';
+    hint.textContent = '以上、機密ファイル No.' + data.no + '、これにて配信終了。';
+    el.sheetBody.appendChild(hint);
+    addButton('もう一度読む', 'btn-amber', function(){ closeOverlay(); goto(0); });
+    addButton('司令部トップへ', 'btn-ghost', function(){ location.href = 'index.html#top'; });
+  }
+
+  function fail(message){
+    openSheet('ERROR', '読み込めませんでした', message);
+    el.sheetFoot.textContent = '';
+  }
+
+  /* ---------- イベント ---------- */
+  el.stage.addEventListener('click', function(){ if (started) advance(); });
+  el.textbox.addEventListener('click', function(){ if (started) advance(); });
+
+  el.btnSize.addEventListener('click', function(e){ e.stopPropagation(); applySize(sizeIdx + 1, true); });
+  el.btnIndex.addEventListener('click', function(e){ e.stopPropagation(); openIndex(); });
+  el.btnLog.addEventListener('click', function(e){ e.stopPropagation(); openLog(); });
+  el.btnAuto.addEventListener('click', function(e){
+    e.stopPropagation();
+    auto = !auto;
+    el.btnAuto.setAttribute('aria-pressed', auto ? 'true' : 'false');
+    if (auto && started && !typing) scheduleAuto(20); else clearAuto();
+  });
+
+  el.overlay.addEventListener('click', function(e){
+    if (e.target === el.overlay && started) closeOverlay();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){ if (started) closeOverlay(); return; }
+    if (el.overlay.classList.contains('show') || !started) return;
+    if (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight' || e.key === 'ArrowDown'){
+      e.preventDefault(); advance();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
+      e.preventDefault(); back();
+    }
+  });
+
+  // 画面幅が変わるとページの割り方も変わるので、落ち着いてから割り直す
+  var resizeTimer = null;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(repaginate, 220);
+  });
+
+  /* ---------- 起動 ---------- */
+  (function restoreSize(){
+    var saved = null;
+    try { saved = localStorage.getItem(SIZE_KEY); } catch(e){}
+    var i = SIZES.indexOf(saved);
+    applySize(i >= 0 ? i : 0, false);
+  })();
+
+  fetch(SRC)
+    .then(function(r){
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function(json){
+      data = json;
+      scenes = json.scenes;
+      document.title = '機密ファイル No.' + json.no + '〈' + json.title + '〉 — うめンち物語';
+      openTitle();
+    })
+    .catch(function(err){
+      fail(location.protocol === 'file:'
+        ? 'ローカルファイルとして開かれています。HTTP サーバ経由で開いてください。'
+        : '物語データの取得に失敗しました（' + err.message + '）。');
+    });
+})();
+</script>
+</body>
+</html>
