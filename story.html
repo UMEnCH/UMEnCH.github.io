@@ -18,6 +18,8 @@
   --txt:#e8edf4; --sub:#8fa1b8; --mono:'Share Tech Mono',monospace;
   /* 話者色は Final Cut 版のテロップ縁取り色に対応させる（地の文の黒だけは暗背景で使えないため置換） */
   --sp-ume:#ff5252; --sp-matsu:#3ddc84; --sp-mugi:#b07cff; --sp-tv:#6aa8ff; --sp-narration:#8fa1b8;
+  /* 前書きに凡例が無い作品の③以降（配達員・電話の音声など、作品ごとに別人）はこの色でまとめる */
+  --sp-other:#6aa8ff; --sp-madame:#d9a066;
   --nav-h:54px;
 }
 /* 本文の文字サイズ（小・中・大）。文字を大きくするぶんテキスト枠を高くし、
@@ -44,13 +46,14 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 
 /* ===== リーダー全体 ===== */
 .reader{margin-top:var(--nav-h);height:calc(100vh - var(--nav-h));height:calc(100dvh - var(--nav-h));
-  display:flex;flex-direction:column;position:relative;user-select:none}
+  display:none;flex-direction:column;position:relative;user-select:none}
+.reader.show{display:flex}
 
 /* 上部バー */
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;
   padding:9px 20px;border-bottom:1px solid var(--line);background:var(--panel2);flex:none}
 .topbar .ch{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--amber);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
 .topbar .ch span{color:var(--sub);margin-right:10px}
 .tools{display:flex;align-items:center;gap:8px;flex:none}
 .tool{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--sub);background:none;
@@ -157,6 +160,37 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .logrow em{font-style:normal;font-weight:900;color:var(--amber)}
 .logrow.n{color:#b9c5d4}
 
+/* ===== 作品一覧（?id= が無いときの画面） ===== */
+.archive{display:none;padding:44px 0 70px;position:relative;margin-top:var(--nav-h)}
+.archive.show{display:block}
+.archive h1{font-size:30px;font-weight:900;letter-spacing:.04em;margin-bottom:8px}
+.archive h1 .tag{display:block;font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.3em;margin-bottom:9px}
+.archive .lead{color:var(--sub);font-size:calc(var(--fs-body) * .86);margin-bottom:38px;line-height:1.9}
+.series{margin-bottom:40px}
+.series h2{font-family:var(--mono);font-size:12px;letter-spacing:.26em;color:var(--amber);
+  padding-bottom:9px;border-bottom:1px solid var(--line);margin-bottom:20px;display:flex;justify-content:space-between;align-items:baseline}
+.series h2 em{font-style:normal;color:var(--sub);font-size:11px;letter-spacing:.1em}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.storycard{display:block;background:var(--panel);border:1px solid var(--line);padding:20px 22px 18px;
+  text-decoration:none;color:var(--txt);position:relative;transition:.25s}
+.storycard::before,.storycard::after{content:"";position:absolute;width:12px;height:12px;border:2px solid var(--amber);transition:.25s}
+.storycard::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
+.storycard::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
+.storycard:hover{border-color:#31445e;transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,0,0,.5)}
+.storycard:hover::before,.storycard:hover::after{width:22px;height:22px}
+.storycard .no{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--sub);display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.storycard .state{color:var(--green);letter-spacing:.1em}
+.storycard .state.done{color:var(--amber)}
+.storycard h3{font-size:calc(var(--fs-body) * 1.06);font-weight:900;letter-spacing:.02em;line-height:1.55;margin-bottom:9px}
+.storycard p{font-size:calc(var(--fs-body) * .8);color:var(--sub);line-height:1.8;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.storycard .meta{margin-top:13px;padding-top:11px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:11px;color:var(--sub);letter-spacing:.1em}
+
+/* リーダー左上の一覧へ戻るリンク（モバイルはナビが隠れるのでここが唯一の導線） */
+.back-link{display:inline-flex;align-items:center;color:var(--sub);flex:none;transition:.2s;margin-right:10px}
+.back-link:hover{color:var(--amber)}
+
 footer.site{padding:34px 0;text-align:center;font-family:var(--mono);font-size:12px;color:var(--sub);
   border-top:1px solid var(--line);letter-spacing:.15em}
 footer.site b{color:var(--amber)}
@@ -211,8 +245,20 @@ footer.site .back:hover{color:var(--amber)}
   </div>
 </nav>
 
+<section class="archive" id="archive">
+  <div class="wrap">
+    <h1><span class="tag">CLASSIFIED ARCHIVE</span>うめンち物語</h1>
+    <p class="lead">機密解除された作戦記録を、立ち絵と会話のまま読む読み物版。<br>
+      司令部（うめ）・参謀（松）・猛獣（むぎ）の三名でお送りする、日常の些事をめぐる全記録。</p>
+    <div id="archiveList"></div>
+  </div>
+</section>
+
 <main class="reader" id="reader">
   <div class="topbar">
+    <a class="back-link" href="story.html" title="作品一覧へ戻る" aria-label="作品一覧へ戻る">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11 6l-6 6 6 6"/></svg>
+    </a>
     <div class="ch" id="chLabel"><span>CH.--</span>読み込み中</div>
     <div class="tools">
       <button class="tool" id="btnSize" type="button" title="文字サイズを変える">文字 小</button>
@@ -267,8 +313,8 @@ footer.site .back:hover{color:var(--amber)}
 (function(){
   'use strict';
 
-  var STORY_ID = 'zettai-boueiken';
-  var SRC = 'data/stories/' + STORY_ID + '.json';
+  var STORY_ID = new URLSearchParams(location.search).get('id') || '';
+  var INDEX_SRC = 'data/stories/index.json';
   var TYPE_SPEED = 26;          // 1文字あたりのミリ秒
   var AUTO_BASE = 900;          // 自動送りの基本待ち時間
   var AUTO_PER_CHAR = 42;       // 自動送りの文字数あたり追加待ち
@@ -278,6 +324,8 @@ footer.site .back:hover{color:var(--amber)}
 
   var el = {
     reader: document.getElementById('reader'),
+    archive: document.getElementById('archive'),
+    archiveList: document.getElementById('archiveList'),
     chLabel: document.getElementById('chLabel'),
     count: document.getElementById('count'),
     progress: document.getElementById('progress'),
@@ -407,12 +455,16 @@ footer.site .back:hover{color:var(--amber)}
   }
 
   /* ---------- 保存（続きから） ---------- */
-  var KEY = 'umench-story:' + STORY_ID;
+  function keyFor(id){ return 'umench-story:' + id; }
+  var KEY = keyFor(STORY_ID);
   function save(){
     try { localStorage.setItem(KEY, JSON.stringify({pos: pos, maxSeen: maxSeen})); } catch(e){}
   }
   function load(){
     try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e){ return null; }
+  }
+  function progressOf(id){
+    try { return JSON.parse(localStorage.getItem(keyFor(id)) || 'null'); } catch(e){ return null; }
   }
 
   /* ---------- セグメント → DOM ---------- */
@@ -560,16 +612,19 @@ footer.site .back:hover{color:var(--amber)}
     el.card.className = 'card';
     el.textbox.className = 'textbox k-' + sc.kind;
 
-    var color = 'var(--sp-' + (sc.speaker || 'narration') + ')';
+    // 凡例のない ③以降（s3, s4…）には専用色が無いので --sp-other に落とす
+    var color = 'var(--sp-' + (sc.speaker || 'narration') + ', var(--sp-other))';
     el.textbox.style.setProperty('--sp', color);
 
     el.who.textContent = '';
     if (sc.kind === 'dialog'){
-      var spec = data.speakers[sc.speaker] || {name: sc.speaker, role: ''};
-      var b = document.createElement('b');
-      b.textContent = spec.name;
-      el.who.appendChild(b);
-      if (spec.role) el.who.appendChild(document.createTextNode(spec.role));
+      var spec = data.speakers[sc.speaker] || {name: '', role: ''};
+      if (spec.name){
+        var b = document.createElement('b');
+        b.textContent = spec.name;
+        el.who.appendChild(b);
+        if (spec.role) el.who.appendChild(document.createTextNode(spec.role));
+      }
     }
 
     // 枠の実寸が確定してから割る（文字サイズ・画面幅が変われば結果も変わる）
@@ -631,7 +686,7 @@ footer.site .back:hover{color:var(--amber)}
 
   function openTitle(){
     var saved = load();
-    openSheet('CLASSIFIED FILE No.' + data.no, data.title, data.subtitle);
+    openSheet(labelOf(data), data.title, data.subtitle);
 
     var hint = document.createElement('div');
     hint.className = 'hint';
@@ -656,7 +711,7 @@ footer.site .back:hover{color:var(--amber)}
   }
 
   function openIndex(){
-    openSheet('INDEX', '目次', data.title + '（機密ファイル No.' + data.no + '）');
+    openSheet('INDEX', '目次', data.title + '（' + labelOf(data) + '）');
     data.chapters.forEach(function(c){
       var b = document.createElement('button');
       b.type = 'button';
@@ -713,13 +768,86 @@ footer.site .back:hover{color:var(--amber)}
   }
 
   function openEnd(){
-    openSheet('END OF FILE', '読了', data.title + '（機密ファイル No.' + data.no + '）');
+    openSheet('END OF FILE', '読了', labelOf(data));
     var hint = document.createElement('div');
     hint.className = 'hint';
-    hint.textContent = '以上、機密ファイル No.' + data.no + '、これにて配信終了。';
+    hint.textContent = data.no
+      ? '以上、機密ファイル No.' + data.no + '、これにて配信終了。'
+      : 'これにて終了。';
     el.sheetBody.appendChild(hint);
-    addButton('もう一度読む', 'btn-amber', function(){ closeOverlay(); goto(0); });
-    addButton('司令部トップへ', 'btn-ghost', function(){ location.href = 'index.html#top'; });
+    addButton('ほかの作品を読む', 'btn-amber', function(){ location.href = 'story.html'; });
+    addButton('もう一度読む', 'btn-ghost', function(){ closeOverlay(); goto(0); });
+  }
+
+  /* ---------- 作品一覧 ---------- */
+  function labelOf(story){
+    var ep = story.episode || (story.no ? 'No.' + story.no : '');
+    return story.series + (ep ? ' ' + ep : '');
+  }
+
+  function renderArchive(index){
+    var groups = [];
+    index.stories.forEach(function(story){
+      var g = groups.filter(function(x){ return x.series === story.series; })[0];
+      if (!g){ g = {series: story.series, items: []}; groups.push(g); }
+      g.items.push(story);
+    });
+
+    groups.forEach(function(group){
+      var section = document.createElement('div');
+      section.className = 'series';
+
+      var h2 = document.createElement('h2');
+      h2.appendChild(document.createTextNode(group.series));
+      var count = document.createElement('em');
+      count.textContent = group.items.length + (group.items.length === 1 ? ' FILE' : ' FILES');
+      h2.appendChild(count);
+      section.appendChild(h2);
+
+      var cards = document.createElement('div');
+      cards.className = 'cards';
+
+      group.items.forEach(function(story){
+        var card = document.createElement('a');
+        card.className = 'storycard';
+        card.href = 'story.html?id=' + encodeURIComponent(story.id);
+
+        var no = document.createElement('div');
+        no.className = 'no';
+        no.appendChild(document.createTextNode(story.episode || ('No.' + story.no)));
+
+        var saved = progressOf(story.id);
+        if (saved && saved.pos > 0){
+          var state = document.createElement('span');
+          var done = saved.maxSeen >= story.scenes - 1;
+          state.className = 'state' + (done ? ' done' : '');
+          state.textContent = done ? '読了' : '続き ' + Math.round(saved.pos / story.scenes * 100) + '%';
+          no.appendChild(state);
+        }
+        card.appendChild(no);
+
+        var h3 = document.createElement('h3');
+        h3.textContent = story.title;
+        card.appendChild(h3);
+
+        var p = document.createElement('p');
+        p.textContent = story.tagline;
+        card.appendChild(p);
+
+        var meta = document.createElement('div');
+        meta.className = 'meta';
+        meta.textContent = story.chapters + '章 / ' + story.scenes + 'シーン / 約'
+          + Math.round(story.chars / 1000) + ',000字';
+        card.appendChild(meta);
+
+        cards.appendChild(card);
+      });
+
+      section.appendChild(cards);
+      el.archiveList.appendChild(section);
+    });
+
+    el.archive.classList.add('show');
   }
 
   function fail(message){
@@ -770,22 +898,39 @@ footer.site .back:hover{color:var(--amber)}
     applySize(i >= 0 ? i : 0, false);
   })();
 
-  fetch(SRC)
-    .then(function(r){
+  function getJSON(url){
+    return fetch(url).then(function(r){
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
-    })
-    .then(function(json){
-      data = json;
-      scenes = json.scenes;
-      document.title = '機密ファイル No.' + json.no + '〈' + json.title + '〉 — うめンち物語';
-      openTitle();
-    })
-    .catch(function(err){
-      fail(location.protocol === 'file:'
-        ? 'ローカルファイルとして開かれています。HTTP サーバ経由で開いてください。'
-        : '物語データの取得に失敗しました（' + err.message + '）。');
     });
+  }
+  function failMessage(err){
+    return location.protocol === 'file:'
+      ? 'ローカルファイルとして開かれています。HTTP サーバ経由で開いてください。'
+      : 'データの取得に失敗しました（' + err.message + '）。';
+  }
+
+  if (STORY_ID){
+    // 1作品を読む画面
+    el.reader.classList.add('show');
+    getJSON('data/stories/' + STORY_ID + '.json')
+      .then(function(json){
+        data = json;
+        scenes = json.scenes;
+        document.title = json.title + '〈' + labelOf(json) + '〉 — うめンち物語';
+        openTitle();
+      })
+      .catch(function(err){
+        fail(failMessage(err) + ' 作品ID「' + STORY_ID + '」が存在しない可能性があります。');
+        addButton('作品一覧へ', 'btn-amber', function(){ location.href = 'story.html'; });
+      });
+  } else {
+    // 作品一覧
+    document.title = 'うめンち物語 — 機密ファイル アーカイブ';
+    getJSON(INDEX_SRC)
+      .then(renderArchive)
+      .catch(function(err){ fail(failMessage(err)); });
+  }
 })();
 </script>
 </body>
