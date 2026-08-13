@@ -88,6 +88,13 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 /* 第三者（配達員・ご婦人・母など）。松と入れ替わりで同じ左に立つ。
    別画風のバストアップで顔の比率が大きいため、うめより控えめに置く */
 .cast.guest{left:6%;height:48%}
+/* 全身の素材（警察官）は同じ高さだと顔が小さくなるので大きめに、人でない物は小さく置く */
+.cast.guest[data-name^="police"]{height:70%}
+/* 小物は画面下部に小さく出るぶん、足元を暗く落とすグラデーション（.stage::after）に
+   埋もれてしまうので、そこだけ前面に出す */
+.cast.guest[data-name^="tv"]{height:30%;z-index:1}
+.cast.guest[data-name^="smartphone"]{height:28%;z-index:1}
+.cast.guest[data-name^="phone"]{height:26%;z-index:1}
 .cast.mugi{left:50%;height:36%;transform:translateX(-50%)}
 .cast[data-state="off"]{opacity:0;transform:translateY(14px)}
 .cast.mugi[data-state="off"]{transform:translateX(-50%) translateY(14px)}
@@ -234,6 +241,10 @@ footer.site .back:hover{color:var(--amber)}
   .cast.ume{height:42%;max-width:46%;right:0}
   .cast.matsu{height:56%;max-width:22%;left:1%}
   .cast.guest{height:36%;max-width:36%;left:1%}
+  .cast.guest[data-name^="police"]{height:52%;max-width:26%}
+  .cast.guest[data-name^="tv"]{height:22%;max-width:30%}
+  .cast.guest[data-name^="smartphone"]{height:21%;max-width:24%}
+  .cast.guest[data-name^="phone"]{height:20%;max-width:24%}
   /* 狭い画面では図が縮んで文字が読めないので、拡大できることを明示する。
      幅が制約になるぶん高さが余るので、図の高さは実寸に合わせてヒントを直下に置く */
   .figzoom{display:block}
@@ -524,7 +535,7 @@ footer.site .back:hover{color:var(--amber)}
   function applyCast(cast, guest){
     // ゲスト枠は作品ごとに中身が変わる（配達員・ご婦人・母…）ので、出す直前に差し替える
     if (guest && el.cast.guest.dataset.name !== guest){
-      el.cast.guest.src = 'assets/story/cast/' + guest + '.png';
+      el.cast.guest.src = 'assets/story/cast/' + guest;   // 拡張子込み（人物は png、アイコンは svg）
       el.cast.guest.dataset.name = guest;
     }
     for (var key in el.cast){
