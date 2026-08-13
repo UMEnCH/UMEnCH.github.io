@@ -23,10 +23,11 @@
   --nav-h:54px;
 }
 /* 本文の文字サイズ（小・中・大）。文字を大きくするぶんテキスト枠を高くし、
-   その差だけステージが縮む。立ち絵はステージ高さに対する % 指定なので、一緒に縮んで欠けない。 */
-:root,:root[data-size="s"]{--fs-body:16.5px;--tb-h:200px}
+   その差だけステージが縮む。立ち絵はステージ高さに対する % 指定なので、一緒に縮んで欠けない。
+   既定は「大」。JS が data-size を付ける前の一瞬も大で出るよう、:root 自体を大の値にしている。 */
+:root,:root[data-size="l"]{--fs-body:23px;--tb-h:334px}
+:root[data-size="s"]{--fs-body:16.5px;--tb-h:200px}
 :root[data-size="m"]{--fs-body:19.5px;--tb-h:266px}
-:root[data-size="l"]{--fs-body:23px;--tb-h:334px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--txt);font-family:'Zen Kaku Gothic New',sans-serif;line-height:1.9;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
@@ -229,9 +230,9 @@ footer.site .back:hover{color:var(--amber)}
 
 @media(max-width:760px){
   /* 狭い画面では同じ pt でも読み幅が短いので、各段を少し控えめにする */
-  :root,:root[data-size="s"]{--fs-body:15px;--tb-h:190px}
+  :root,:root[data-size="l"]{--fs-body:20.5px;--tb-h:312px}
+  :root[data-size="s"]{--fs-body:15px;--tb-h:190px}
   :root[data-size="m"]{--fs-body:17.5px;--tb-h:248px}
-  :root[data-size="l"]{--fs-body:20.5px;--tb-h:312px}
   .topbar{padding:8px 14px}
   .topbar .ch{font-size:11px}
   .tool{padding:5px 8px;font-size:10px}
@@ -963,7 +964,7 @@ footer.site .back:hover{color:var(--amber)}
     var saved = null;
     try { saved = localStorage.getItem(SIZE_KEY); } catch(e){}
     var i = SIZES.indexOf(saved);
-    applySize(i >= 0 ? i : 0, false);
+    applySize(i >= 0 ? i : SIZES.indexOf('l'), false);   // 未設定なら「大」で始める
   })();
 
   function getJSON(url){
