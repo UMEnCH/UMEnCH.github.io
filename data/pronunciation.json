@@ -1,0 +1,302 @@
+{
+  "schema": "umench-story-pronunciation.v1",
+  "_comment": "読み上げ用の読み替え辞書。原本は long-video-fcpxml-editor/templates/pronunciation_overrides.json（FCPXML/TTS パイプラインと共通の資産）。",
+  "rules": [
+    {
+      "spelling": "TRPM8",
+      "reading": "ティーアールピーエムエイト"
+    },
+    {
+      "spelling": "PDCAのC",
+      "reading": "ピーディーシーエーのシー"
+    },
+    {
+      "spelling": "PDCA",
+      "reading": "ピーディーシーエー"
+    },
+    {
+      "spelling": "No.7",
+      "reading": "ナンバーセブン"
+    },
+    {
+      "spelling": "呷り",
+      "reading": "あおり"
+    },
+    {
+      "spelling": "呷る",
+      "reading": "あおる"
+    },
+    {
+      "spelling": "呷っ",
+      "reading": "あおっ"
+    },
+    {
+      "spelling": "蓄熱体",
+      "reading": "ちくねつたい"
+    },
+    {
+      "spelling": "屯",
+      "reading": "たむろ"
+    },
+    {
+      "spelling": "盤踞",
+      "reading": "ばんきょ"
+    },
+    {
+      "spelling": "肉球",
+      "reading": "にくきゅう"
+    },
+    {
+      "spelling": "兵站",
+      "reading": "へいたん"
+    },
+    {
+      "spelling": "輻射",
+      "reading": "ふくしゃ"
+    },
+    {
+      "spelling": "輻射熱",
+      "reading": "ふくしゃねつ"
+    },
+    {
+      "spelling": "簾",
+      "reading": "すだれ"
+    },
+    {
+      "spelling": "気化熱",
+      "reading": "きかねつ"
+    },
+    {
+      "spelling": "孫子",
+      "reading": "そんし"
+    },
+    {
+      "spelling": "不快指数",
+      "reading": "ふかいしすう"
+    },
+    {
+      "spelling": "湿度",
+      "reading": "しつど"
+    },
+    {
+      "spelling": "閥",
+      "reading": "ばつ"
+    },
+    {
+      "spelling": "群知能",
+      "reading": "ぐんちのう"
+    },
+    {
+      "spelling": "衛生兵",
+      "reading": "えいせいへい"
+    },
+    {
+      "spelling": "電力ひっ迫",
+      "reading": "でんりょくひっぱく"
+    },
+    {
+      "spelling": "ひっ迫",
+      "reading": "ひっぱく"
+    },
+    {
+      "spelling": "ハッカ油",
+      "reading": "ハッカゆ"
+    },
+    {
+      "spelling": "灼熱",
+      "reading": "しゃくねつ"
+    },
+    {
+      "spelling": "拠点",
+      "reading": "きょてん"
+    },
+    {
+      "spelling": "司令官",
+      "reading": "しれいかん"
+    },
+    {
+      "spelling": "総司令官",
+      "reading": "そうしれいかん"
+    },
+    {
+      "spelling": "司令部",
+      "reading": "しれいぶ"
+    },
+    {
+      "spelling": "参謀",
+      "reading": "さんぼう"
+    },
+    {
+      "spelling": "兵卒",
+      "reading": "へいそつ"
+    },
+    {
+      "spelling": "対面",
+      "reading": "たいめん"
+    },
+    {
+      "spelling": "対峙",
+      "reading": "たいじ"
+    },
+    {
+      "spelling": "瞑目",
+      "reading": "めいもく"
+    },
+    {
+      "spelling": "勝手口",
+      "reading": "かってぐち"
+    },
+    {
+      "spelling": "回覧板",
+      "reading": "かいらんばん"
+    },
+    {
+      "spelling": "お裾分け",
+      "reading": "おすそわけ"
+    },
+    {
+      "spelling": "裾分け",
+      "reading": "すそわけ"
+    },
+    {
+      "spelling": "自堕落",
+      "reading": "じだらく"
+    },
+    {
+      "spelling": "毛布",
+      "reading": "もうふ"
+    },
+    {
+      "spelling": "毛むくじゃら",
+      "reading": "けむくじゃら"
+    },
+    {
+      "spelling": "毛むくじゃらの",
+      "reading": "けむくじゃらの"
+    },
+    {
+      "spelling": "脱衣所",
+      "reading": "だついじょ"
+    },
+    {
+      "spelling": "外壁",
+      "reading": "がいへき"
+    },
+    {
+      "spelling": "二階建て",
+      "reading": "にかいだて"
+    },
+    {
+      "spelling": "二階建ての",
+      "reading": "にかいだての"
+    },
+    {
+      "spelling": "酷暑",
+      "reading": "こくしょ"
+    },
+    {
+      "spelling": "猛暑",
+      "reading": "もうしょ"
+    },
+    {
+      "spelling": "熱波",
+      "reading": "ねっぱ"
+    },
+    {
+      "spelling": "敵性",
+      "reading": "てきせい"
+    },
+    {
+      "spelling": "敵性熱波",
+      "reading": "てきせいねっぱ"
+    },
+    {
+      "spelling": "敵性接触",
+      "reading": "てきせいせっしょく"
+    },
+    {
+      "spelling": "電子戦",
+      "reading": "でんしせん"
+    },
+    {
+      "spelling": "認知科学",
+      "reading": "にんちかがく"
+    },
+    {
+      "spelling": "認知",
+      "reading": "にんち"
+    },
+    {
+      "spelling": "排熱戦",
+      "reading": "はいねつせん"
+    },
+    {
+      "spelling": "排熱",
+      "reading": "はいねつ"
+    },
+    {
+      "spelling": "電気代",
+      "reading": "でんきだい"
+    },
+    {
+      "spelling": "氷枕",
+      "reading": "こおりまくら"
+    },
+    {
+      "spelling": "氷",
+      "reading": "こおり"
+    },
+    {
+      "spelling": "保冷剤",
+      "reading": "ほれいざい"
+    },
+    {
+      "spelling": "経口補水液",
+      "reading": "けいこうほすいえき"
+    },
+    {
+      "spelling": "補水液",
+      "reading": "ほすいえき"
+    },
+    {
+      "spelling": "蒸発",
+      "reading": "じょうはつ"
+    },
+    {
+      "spelling": "符号",
+      "reading": "ふごう"
+    },
+    {
+      "spelling": "符号は",
+      "reading": "ふごうは"
+    },
+    {
+      "spelling": "詭弁",
+      "reading": "きべん"
+    },
+    {
+      "spelling": "完遂",
+      "reading": "かんすい"
+    },
+    {
+      "spelling": "発令",
+      "reading": "はつれい"
+    },
+    {
+      "spelling": "戦費",
+      "reading": "せんぴ"
+    },
+    {
+      "spelling": "機会費用",
+      "reading": "きかいひよう"
+    },
+    {
+      "spelling": "選択と集中",
+      "reading": "せんたくとしゅうちゅう"
+    },
+    {
+      "spelling": "肉球で",
+      "reading": "にくきゅうで"
+    }
+  ]
+}

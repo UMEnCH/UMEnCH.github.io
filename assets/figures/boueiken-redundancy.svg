@@ -1,72 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-labelledby="t d">
-<title id="t">冗長化の三段構え — 停電下のフォールバック</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" width="1200" height="480" role="img" aria-labelledby="t d">
+<title id="t">冗長化の三段構え — 単一障害点が落ちたあと</title>
 <desc id="d">電気という単一障害点が断たれたあと、カセットコンロ・ポータブル電源・むぎの体温という三段の代替手段に落ちていく構造の図</desc>
+<!-- 背景に敷く図。立ち絵が下から重なるので、内容は上寄せ・中央寄せにしてある。
+     img で読むため色とフォントは直値で持つ（親のCSSも Webフォントも効かない） -->
 <style>
   .f { font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
-  .ttl { font-size: 21px; font-weight: 800; fill: #e8edf4; letter-spacing: .04em; }
-  .kick { font-size: 11px; font-weight: 700; fill: #ffc233; letter-spacing: .3em; }
-  .lbl { font-size: 16px; font-weight: 800; fill: #e8edf4; }
-  .sub { font-size: 12.5px; fill: #8fa1b8; }
-  .no { font-size: 11px; font-weight: 700; fill: #ffc233; letter-spacing: .16em; }
-  .keeps { font-size: 13px; font-weight: 700; fill: #ffc233; }
-  .dead { font-size: 15px; font-weight: 800; fill: #ff8a80; }
-  .deadsub { font-size: 12.5px; fill: #b98a8a; }
-  .note { font-size: 12.5px; fill: #8fa1b8; }
-  .green { fill: #3ddc84; }
+  .kick { font-size: 15px; font-weight: 700; fill: #ffc233; letter-spacing: .34em; }
+  .ttl  { font-size: 34px; font-weight: 800; fill: #e8edf4; letter-spacing: .04em; }
+  .dead { font-size: 25px; font-weight: 800; fill: #ff6b6b; letter-spacing: .1em; }
+  .no   { font-size: 15px; font-weight: 700; fill: #ffc233; letter-spacing: .2em; }
+  .lbl  { font-size: 25px; font-weight: 800; fill: #e8edf4; }
+  .scp  { font-size: 19px; font-weight: 700; fill: #8fa1b8; }
+  .win  { font-size: 25px; font-weight: 800; fill: #3ddc84; }
+  .wins { font-size: 19px; font-weight: 700; fill: #3ddc84; }
 </style>
 
-<rect width="900" height="500" fill="#0e141d"/>
-<rect x="1" y="1" width="898" height="498" fill="none" stroke="#1f2c3d" stroke-width="2"/>
-<path d="M14 34 V14 H34" fill="none" stroke="#ffc233" stroke-width="2.5"/>
-<path d="M886 466 V486 H866" fill="none" stroke="#ffc233" stroke-width="2.5"/>
+<rect width="1200" height="480" fill="#0a0f16"/>
+<path d="M22 46 V22 H46 M1178 434 V458 H1154" fill="none" stroke="#ffc233" stroke-width="2.5"/>
 
-<text class="f kick" x="40" y="40">REDUNDANCY</text>
-<text class="f ttl" x="40" y="68">冗長化の三段構え — 単一障害点が落ちたあと</text>
+<text class="f kick" x="60" y="52">REDUNDANCY</text>
+<text class="f ttl"  x="60" y="96">冗長化の三段構え</text>
 
-<!-- 単一障害点 -->
-<g>
-  <rect x="150" y="88" width="600" height="52" rx="3" fill="#1a1016" stroke="#ff5252" stroke-width="1.5"/>
-  <text class="f dead" x="172" y="112">商用電源 — 単一障害点（Single Point of Failure）</text>
-  <text class="f deadsub" x="172" y="131">ロボット掃除機もサーキュレーターも、この一点を断たれた瞬間に沈黙する</text>
-  <text class="f dead" x="728" y="120" text-anchor="end">停電</text>
+<!-- 落ちた単一障害点 -->
+<rect x="60" y="140" width="1080" height="52" fill="#1a1016" stroke="#ff6b6b" stroke-width="2"/>
+<text class="f dead" x="600" y="175" text-anchor="middle">商用電源　—　停電</text>
+<path d="M60 166 H1140" stroke="#ff6b6b" stroke-width="2" opacity=".55"/>
+
+<g stroke="#8fa1b8" stroke-width="2.5" stroke-dasharray="6 5" fill="none">
+  <path d="M226 200 V236 M600 200 V236 M974 200 V236"/>
 </g>
 
-<path d="M450 144 V166" stroke="#ff5252" stroke-width="2" stroke-dasharray="4 3"/>
-<path d="M443 160 l7 8 7-8" fill="none" stroke="#ff5252" stroke-width="2"/>
-
-<!-- 第一の冗長化 -->
+<!-- 三段のフォールバック -->
 <g>
-  <rect x="150" y="174" width="600" height="56" rx="3" fill="#111823" stroke="#1f2c3d" stroke-width="1.5"/>
-  <rect x="150" y="174" width="4" height="56" fill="#ffc233"/>
-  <text class="f no" x="172" y="196">第一の冗長化</text>
-  <text class="f lbl" x="172" y="217">カセットコンロ</text>
-  <text class="f sub" x="330" y="217">電力に依存せぬ独立熱源。一九世紀の技術は、二一世紀の停電を笑う</text>
-  <text class="f keeps" x="728" y="203" text-anchor="end">熱</text>
+  <rect x="60" y="250" width="333" height="170" fill="#111823" stroke="#1f2c3d" stroke-width="2"/>
+  <rect x="60" y="250" width="333" height="5" fill="#ffc233"/>
+  <text class="f no"  x="226" y="292" text-anchor="middle">第一の冗長化</text>
+  <text class="f lbl" x="226" y="342" text-anchor="middle">カセットコンロ</text>
+  <text class="f scp" x="226" y="384" text-anchor="middle">熱</text>
 </g>
-<path d="M450 234 V250 M443 244 l7 8 7-8" fill="none" stroke="#31445e" stroke-width="2"/>
-
-<!-- 第二の冗長化 -->
 <g>
-  <rect x="150" y="258" width="600" height="56" rx="3" fill="#111823" stroke="#1f2c3d" stroke-width="1.5"/>
-  <rect x="150" y="258" width="4" height="56" fill="#ffc233"/>
-  <text class="f no" x="172" y="280">第二の冗長化</text>
-  <text class="f lbl" x="172" y="301">ポータブル電源</text>
-  <text class="f sub" x="330" y="301">平時に蓄えた戦略予備兵力。情報線だけは、何があっても死守する</text>
-  <text class="f keeps" x="728" y="287" text-anchor="end">情報</text>
+  <rect x="433" y="250" width="333" height="170" fill="#111823" stroke="#1f2c3d" stroke-width="2"/>
+  <rect x="433" y="250" width="333" height="5" fill="#ffc233"/>
+  <text class="f no"  x="600" y="292" text-anchor="middle">第二の冗長化</text>
+  <text class="f lbl" x="600" y="342" text-anchor="middle">ポータブル電源</text>
+  <text class="f scp" x="600" y="384" text-anchor="middle">情報</text>
 </g>
-<path d="M450 318 V334 M443 328 l7 8 7-8" fill="none" stroke="#31445e" stroke-width="2"/>
-
-<!-- 第三の冗長化 -->
 <g>
-  <rect x="150" y="342" width="600" height="66" rx="3" fill="#101c17" stroke="#3ddc84" stroke-width="1.8"/>
-  <rect x="150" y="342" width="4" height="66" fill="#3ddc84"/>
-  <text class="f no green" x="172" y="366">第三の冗長化</text>
-  <text class="f lbl" x="172" y="382">むぎ</text>
-  <text class="f sub" x="240" y="382">生体熱源。摂氏三八度を、電力供給なしに淡々と維持し続ける</text>
-  <text class="f sub" x="172" y="400">バッテリー切れの概念を持たぬ、究極の自律分散型暖房</text>
-  <text class="f keeps green" x="728" y="366" text-anchor="end">体温</text>
+  <rect x="806" y="250" width="333" height="170" fill="#111823" stroke="#3ddc84" stroke-width="2"/>
+  <rect x="806" y="250" width="333" height="5" fill="#3ddc84"/>
+  <text class="f no"  x="972" y="292" text-anchor="middle">第三の冗長化</text>
+  <text class="f win" x="972" y="342" text-anchor="middle">むぎ　三八度</text>
+  <text class="f wins" x="972" y="384" text-anchor="middle">体温</text>
 </g>
-
-<text class="f note" x="450" y="447" text-anchor="middle">三〇分後、電力は復旧した。だが二人は、しばらくこたつから出なかった</text>
-<text class="f note" x="450" y="472" text-anchor="middle" fill="#ffc233">冗長化の最終形態とは、結局、生き物の体温なのかもしれない</text>
 </svg>
