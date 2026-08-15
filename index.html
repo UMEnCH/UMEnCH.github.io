@@ -9,6 +9,61 @@
 <meta property="og:description" content="安易に建てると、詰みます。5年分の居住実験データによるやらかし報告と自宅要塞化サーガ。">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0f14'/%3E%3Crect x='6' y='6' width='20' height='20' fill='none' stroke='%23ffc233' stroke-width='3'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23ffc233'/%3E%3C/svg%3E">
+<!-- SEO:AUTO --><!-- ここは tools/build_seo.py が生成する。手で編集しない -->
+<link rel="canonical" href="https://umench.github.io/">
+<meta property="og:url" content="https://umench.github.io/">
+<meta property="og:site_name" content="うめンち">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://umench.github.io/assets/ogp/ogp-index.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="うめンち — 自宅要塞 作戦司令部">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@UMEs_House">
+<meta name="twitter:title" content="うめンち — 自宅要塞 作戦司令部">
+<meta name="twitter:description" content="安易に建てると、詰みます。5年分の居住実験データによるやらかし報告と自宅要塞化サーガ。">
+<meta name="twitter:image" content="https://umench.github.io/assets/ogp/ogp-index.png">
+<meta name="theme-color" content="#0b0f14">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://umench.github.io/#website",
+      "name": "うめンち",
+      "alternateName": "うめンち 自宅要塞 作戦司令部",
+      "url": "https://umench.github.io/",
+      "inLanguage": "ja",
+      "publisher": {
+        "@type": "Person",
+        "name": "うめ",
+        "alternateName": "家芸人うめ",
+        "description": "注文住宅を建てて5年住み、自宅の要塞化（スマートホーム化）を実践する住宅系YouTuber。",
+        "url": "https://umench.github.io/",
+        "sameAs": [
+          "https://www.youtube.com/@Umes-House",
+          "https://x.com/UMEs_House",
+          "https://note.com/umentch"
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "うめ",
+      "alternateName": "家芸人うめ",
+      "description": "注文住宅を建てて5年住み、自宅の要塞化（スマートホーム化）を実践する住宅系YouTuber。",
+      "url": "https://umench.github.io/",
+      "sameAs": [
+        "https://www.youtube.com/@Umes-House",
+        "https://x.com/UMEs_House",
+        "https://note.com/umentch"
+      ]
+    }
+  ]
+}
+</script>
+<!-- /SEO:AUTO -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
@@ -197,6 +252,8 @@ h1 .amber{color:var(--amber);text-shadow:0 0 24px rgba(255,194,51,.4)}
 
 footer.site{padding:34px 0;text-align:center;font-family:var(--mono);font-size:12px;color:var(--sub);border-top:1px solid var(--line);letter-spacing:.15em}
 footer.site b{color:var(--amber)}
+footer.site .back{display:inline-block;margin-top:12px;color:var(--sub);text-decoration:none}
+footer.site .back:hover{color:var(--amber)}
 @media(max-width:760px){.radar{display:none}section{padding:56px 0}}
 </style>
 </head>
@@ -431,6 +488,13 @@ footer.site b{color:var(--amber)}
         <span class="arrow">-&gt;</span>
       </a>
     </div>
+    <p class="rv" style="margin-top:26px;font-family:var(--mono);font-size:12.5px;color:var(--sub);letter-spacing:.06em">
+      &gt; PR・タイアップ、取材のご相談は
+      <a href="contact.html?type=pr" style="color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(255,194,51,.35)">企業のご担当者さま向けの受付窓口</a>
+      から。個人の方のご相談・動画リクエストは
+      <a href="contact.html" style="color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(255,194,51,.35)">通信要請フォーム</a>
+      へどうぞ。
+    </p>
   </div>
 </section>
 
@@ -448,7 +512,9 @@ footer.site b{color:var(--amber)}
   </div>
 </section>
 
-<footer class="site">UMENCHI FORTRESS COMMAND — <b>家芸人うめ</b> / HOME FORTRESS PROJECT</footer>
+<footer class="site">UMENCHI FORTRESS COMMAND — <b>家芸人うめ</b> / HOME FORTRESS PROJECT
+  <br><a class="back" href="privacy.html">プライバシーポリシー・免責事項</a>
+</footer>
 
 <script>
 // タイプライター（名乗り）
@@ -472,5 +538,6 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 </script>
 
+<script defer src="assets/site.js"></script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://umench.github.io/sitemap.xml

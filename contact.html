@@ -9,6 +9,35 @@
 <meta property="og:description" content="司令部への通信回線。コラボ・取材・PR・出演のご相談はこちらから。">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0f14'/%3E%3Crect x='6' y='6' width='20' height='20' fill='none' stroke='%23ffc233' stroke-width='3'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23ffc233'/%3E%3C/svg%3E">
+<!-- SEO:AUTO --><!-- ここは tools/build_seo.py が生成する。手で編集しない -->
+<link rel="canonical" href="https://umench.github.io/contact.html">
+<meta property="og:url" content="https://umench.github.io/contact.html">
+<meta property="og:site_name" content="うめンち">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://umench.github.io/assets/ogp/ogp-contact.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="通信要請 — うめンち 自宅要塞 作戦司令部">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@UMEs_House">
+<meta name="twitter:title" content="通信要請 — うめンち 自宅要塞 作戦司令部">
+<meta name="twitter:description" content="司令部への通信回線。コラボ・取材・PR・出演のご相談はこちらから。">
+<meta name="twitter:image" content="https://umench.github.io/assets/ogp/ogp-contact.png">
+<meta name="theme-color" content="#0b0f14">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "通信要請 — うめンち 自宅要塞 作戦司令部",
+  "description": "うめンち作戦司令部への通信回線。コラボ・取材・PR・出演のご相談、動画や要塞化に関するお問い合わせはこちらから。",
+  "url": "https://umench.github.io/contact.html",
+  "isPartOf": {
+    "@id": "https://umench.github.io/#website"
+  },
+  "inLanguage": "ja"
+}
+</script>
+<!-- /SEO:AUTO -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
@@ -82,6 +111,27 @@ h1 .amber{color:var(--amber);text-shadow:0 0 24px rgba(255,194,51,.4)}
 .alt-comms a{color:var(--amber);text-decoration:none}
 .alt-comms a:hover{text-decoration:underline}
 
+/* ===== 窓口の案内（種別を選ぶと出る） ===== */
+.type-note{display:none;border-left:2px solid var(--amber);background:rgba(255,194,51,.05);
+  padding:14px 16px;margin-top:-6px;margin-bottom:22px;font-size:13.5px;color:#cfd8e3;line-height:1.8}
+.type-note.show{display:block}
+.type-note a{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(255,194,51,.35)}
+
+/* ===== 企業のご担当者さま向けパネル ===== */
+.biz{background:var(--panel2);border:1px solid var(--line);padding:28px 30px;max-width:660px;margin-bottom:34px;position:relative}
+.biz .lbl{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.25em;margin-bottom:14px}
+.biz h2{font-size:19px;font-weight:900;margin-bottom:12px;letter-spacing:.02em}
+.biz p{font-size:14px;color:var(--sub);margin-bottom:14px;line-height:1.85}
+.biz .rows{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:13.5px;margin-bottom:16px}
+.biz .rows dt{font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.14em;padding-top:4px;white-space:nowrap}
+.biz .rows dd{color:#cfd8e3;line-height:1.75}
+.biz .rows dd a{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(255,194,51,.35)}
+.biz .jump{font-family:var(--mono);font-size:12px;color:var(--amber);text-decoration:none;letter-spacing:.1em;
+  display:inline-flex;align-items:center;gap:6px}
+.biz .jump svg{width:13px;height:13px}
+@media(max-width:760px){.biz{padding:22px 20px}.biz .rows{grid-template-columns:1fr;gap:4px 0}
+  .biz .rows dt{padding-top:10px}}
+
 /* ===== 送信完了バナー ===== */
 .sent-banner{display:none;border:1px solid var(--green);background:rgba(61,220,132,.08);padding:22px 26px;margin-bottom:30px;position:relative;max-width:660px}
 .sent-banner.show{display:block}
@@ -118,7 +168,7 @@ footer.site .back{display:inline-block;margin-top:14px;color:var(--amber);text-d
   <div class="wrap">
     <span class="classified">CLASSIFIED — CONTACT</span>
     <h1>通信要請<br><span class="amber">司令部への直通回線。</span></h1>
-    <p class="desc">コラボ・出演のご相談、取材・PR・タイアップ、動画や要塞化に関するお問い合わせはこの回線から。司令部（うめ）が確認し次第、順次応答します。</p>
+    <p class="desc">PR・タイアップ、取材、コラボ・出演のご相談、家づくりの相談、動画リクエストの受付回線。用件の種別を選ぶと、書いていただきたいことが表示されます。司令部（うめ）が確認し次第、順次応答します。</p>
   </div>
 </div>
 
@@ -128,6 +178,28 @@ footer.site .back{display:inline-block;margin-top:14px;color:var(--amber);text-d
     <div class="sent-banner" id="sentBanner">
       <div class="st">[OK] TRANSMISSION RECEIVED</div>
       <p>通信を受信しました。司令部が確認のうえ、順次応答します。送信ありがとうございました。</p>
+    </div>
+
+    <!-- 企業のご担当者さま向け -->
+    <div class="biz rv">
+      <div class="lbl">FOR BUSINESS / 企業のご担当者さまへ</div>
+      <h2>PR・タイアップのご相談を受け付けています</h2>
+      <p>うめンちは、注文住宅を建てて5年住み、自宅のスマートホーム化を実践している当事者としてのレビューを発信しています。実際に導入・使用したうえでの紹介を原則としているため、体験に基づいてお伝えできる商材を歓迎します。</p>
+      <dl class="rows">
+        <dt>対応形式</dt>
+        <dd>YouTube本編動画での紹介 / 商品単独の紹介動画 / ショート動画 / note記事 / 当サイト「兵装アーカイブ」への掲載</dd>
+        <dt>相性の良い商材</dt>
+        <dd>住宅設備・建材、スマートホーム / IoT 機器、家電、デスク環境、電力まわり（太陽光・V2H・EV・ポータブル電源）</dd>
+        <dt>視聴者層</dt>
+        <dd>これから注文住宅を建てる方（打ち合わせ中・仕様検討中）と、建てた後に快適化・スマート化したい方が中心です</dd>
+        <dt>紹介実績</dt>
+        <dd><a href="arsenal.html">兵装アーカイブ</a>に、これまで紹介した装備をジャンル別に掲載しています</dd>
+        <dt>ご相談時に</dt>
+        <dd>商材のジャンル、ご希望の形式、ご予算感、希望時期をお知らせいただけると、可否のご返答がスムーズです</dd>
+      </dl>
+      <a class="jump" href="#type" data-preset="pr">この内容で問い合わせる
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
 
     <div class="form-panel rv">
@@ -152,13 +224,16 @@ footer.site .back{display:inline-block;margin-top:14px;color:var(--amber);text-d
         <div class="field">
           <label for="type">通信種別</label>
           <select id="type" name="お問い合わせ種別">
-            <option>コラボ・出演のご相談</option>
-            <option>取材・PR・タイアップ</option>
-            <option>動画・商品についての質問</option>
-            <option>要塞化・家づくりの相談</option>
-            <option>その他</option>
+            <option data-key="pr">PR・タイアップのご依頼（企業の方）</option>
+            <option data-key="media">取材・メディア掲載のご依頼</option>
+            <option data-key="collab">コラボ・出演のご相談</option>
+            <option data-key="consult">家づくり・要塞化の相談</option>
+            <option data-key="idea">動画リクエスト・ネタの提供</option>
+            <option data-key="question">動画・装備についての質問</option>
+            <option data-key="other">その他</option>
           </select>
         </div>
+        <div class="type-note" id="typeNote"></div>
         <div class="field">
           <label for="message">通信本文（メッセージ）<span class="req">*</span></label>
           <textarea id="message" name="メッセージ" required placeholder="ご用件をご記入ください。"></textarea>
@@ -184,7 +259,7 @@ footer.site .back{display:inline-block;margin-top:14px;color:var(--amber);text-d
 
 <footer class="site">
   UMENCHI FORTRESS COMMAND — <b>家芸人うめ</b> / CONTACT
-  <br><a class="back" href="index.html#top">&lt;- 司令部トップに戻る</a>
+  <br><a class="back" href="index.html#top">&lt;- 司令部トップに戻る</a><span style="opacity:.4;margin:0 10px">/</span><a class="back" style="margin-top:0" href="privacy.html">プライバシーポリシー・免責事項</a>
 </footer>
 
 <script>
@@ -193,6 +268,49 @@ if (new URLSearchParams(location.search).get('sent') === '1') {
   const b = document.getElementById('sentBanner');
   if (b) { b.classList.add('show'); b.scrollIntoView({behavior:'smooth', block:'center'}); }
 }
+// 通信種別ごとの案内。選ぶと「何を書けばいいか」を出し、メールの件名にも種別を入れる
+const TYPE_NOTES = {
+  pr: '商材のジャンル、ご希望の形式（本編動画での紹介・単独動画・ショート・note記事・兵装アーカイブ掲載）、ご予算感、希望時期をご記入ください。実際に導入・使用したうえでの紹介を原則としているため、サンプルのご提供可否もあわせてお知らせいただけると助かります。',
+  media: '媒体名、掲載・放送の予定日、取材形式（書面／オンライン／対面）、ご希望の内容をご記入ください。',
+  collab: 'チャンネル名またはお名前、企画の概要、希望時期をご記入ください。',
+  consult: 'うめは建築士ではなく、注文住宅を建てて5年住んだ施主です。専門的な判断や設計の可否についてはお答えできませんが、実際にやってみてどうだったかは体験の範囲でお答えします。現在の状況（土地・打ち合わせ中の内容など）を添えていただけると具体的に返せます。',
+  idea: '取り上げてほしいテーマ、いま困っていることをどうぞ。いただいた内容は動画の企画に使わせていただくことがあります（個人が特定できる形では扱いません）。',
+  question: 'どの動画・どの装備についてかを書いていただけると、特定が早くなります。',
+  other: 'ご用件をご記入ください。'
+};
+(() => {
+  const sel = document.getElementById('type');
+  const note = document.getElementById('typeNote');
+  const subject = document.querySelector('input[name="_subject"]');
+  if (!sel || !note) return;
+
+  const key = () => sel.options[sel.selectedIndex].dataset.key || 'other';
+  const render = () => {
+    note.textContent = TYPE_NOTES[key()] || '';
+    note.classList.toggle('show', !!note.textContent);
+    if (subject) subject.value = '【うめンち】' + sel.value;
+  };
+  sel.addEventListener('change', render);
+
+  // 企業向けパネルのボタン、および ?type=pr のような外部リンクからの指定
+  const preset = k => {
+    const opt = [...sel.options].find(o => o.dataset.key === k);
+    if (!opt) return false;
+    sel.value = opt.value; render(); return true;
+  };
+  document.querySelectorAll('[data-preset]').forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      preset(el.dataset.preset);
+      sel.scrollIntoView({behavior:'smooth', block:'center'});
+      sel.focus({preventScroll:true});
+    });
+  });
+  const q = new URLSearchParams(location.search).get('type');
+  if (q) preset(q);
+  render();
+})();
+
 // スクロール出現
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (!e.isIntersecting) return;
@@ -202,5 +320,6 @@ const io = new IntersectionObserver(es => es.forEach(e => {
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
 </script>
 
+<script defer src="assets/site.js"></script>
 </body>
 </html>
