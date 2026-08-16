@@ -11,11 +11,15 @@
   'use strict';
 
   // ===== 設定 =========================================================
-  var UM_GA_ID = ''; // 例: 'G-XXXXXXXXXX'
+  var UM_GA_ID = 'G-FSPMGP6FDV';
   // ====================================================================
 
-  var isLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
-  var enabled = /^G-[A-Z0-9]+$/i.test(UM_GA_ID);
+  // ローカル（http://localhost… / file://）では送信しない。
+  // 動作確認のクリックが本番のレポートに混ざらないようにするため、
+  // コンソールへの出力だけ行う。
+  var isLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)
+             || location.protocol === 'file:';
+  var enabled = /^G-[A-Z0-9]+$/i.test(UM_GA_ID) && !isLocal;
 
   // ---- GA4 の読み込み ----
   if (enabled) {
