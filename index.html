@@ -194,6 +194,8 @@ h1 .amber{color:var(--amber);text-shadow:0 0 24px rgba(255,194,51,.4)}
 .video .play svg{width:38px;height:38px}
 .video:hover .play{opacity:1}
 .video .fbody{padding:18px 20px 22px}
+/* タイトルは自動更新で入るため長さが読めない。3行で切ってカードの高さを揃える */
+.video .fbody h3{font-size:15px;font-weight:700;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .video h3{font-size:15px;font-weight:700;line-height:1.6;color:var(--txt);transition:.2s}
 .video:hover h3{color:var(--amber)}
 
@@ -374,35 +376,37 @@ footer.site .back:hover{color:var(--amber)}
     <h2 class="rv"><span class="tag">LATEST TRANSMISSIONS</span>最新の投稿</h2>
     <p class="lead rv">要塞から届いた最新の作戦報告。</p>
     <div class="videos">
-      <a class="video rv d1" href="https://www.youtube.com/watch?v=H17yFI48ZbY" target="_blank" rel="noopener">
+      <!-- VIDEOS:AUTO --><!-- ここは .github/scripts/update_videos.py が自動生成する。手で書き換えても次の実行で消える -->
+      <a class="video rv d1" href="https://www.youtube.com/watch?v=CLsJswvd-ls" target="_blank" rel="noopener">
+        <div class="thumb">
+          <span class="rec">REC</span>
+          <img src="https://i.ytimg.com/vi/CLsJswvd-ls/hqdefault.jpg" alt="2026年上半期、本当に買ってよかったもの6選。今年の夏を乗り切るための「自宅要塞」装備を、家の中から出撃用までまとめました。" loading="lazy">
+          <span class="dur">11:39</span>
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="fbody"><h3>2026年上半期、本当に買ってよかったもの6選。今年の夏を乗り切るための「自宅要塞」装備を、家の中から出撃用までまとめました。</h3></div>
+      </a>
+      <a class="video rv d2" href="https://www.youtube.com/watch?v=H17yFI48ZbY" target="_blank" rel="noopener">
         <div class="thumb">
           <span class="rec">REC</span>
           <img src="https://i.ytimg.com/vi/H17yFI48ZbY/hqdefault.jpg" alt="【絶対買え】超絶お得祭りのAmazonプライムデー2026！要塞主が選ぶQOL爆上げ神ガジェット" loading="lazy">
-          <span class="dur">9:28</span>
+          <span class="dur">9:27</span>
           <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
         <div class="fbody"><h3>【絶対買え】超絶お得祭りのAmazonプライムデー2026！要塞主が選ぶQOL爆上げ神ガジェット</h3></div>
       </a>
-      <a class="video rv d2" href="https://www.youtube.com/watch?v=hD5EhfBnLWI" target="_blank" rel="noopener">
+      <a class="video rv d3" href="https://www.youtube.com/watch?v=hD5EhfBnLWI" target="_blank" rel="noopener">
         <div class="thumb">
           <span class="rec">REC</span>
           <img src="https://i.ytimg.com/vi/hD5EhfBnLWI/hqdefault.jpg" alt="【電気代58円】なぜ大雨の日に電力を9.8kWh使って破産しないのか？" loading="lazy">
-          <span class="dur">14:50</span>
+          <span class="dur">14:49</span>
           <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
         <div class="fbody"><h3>【電気代58円】なぜ大雨の日に電力を9.8kWh使って破産しないのか？</h3></div>
       </a>
-      <a class="video rv d3" href="https://www.youtube.com/watch?v=GXrHcCJ51HU" target="_blank" rel="noopener">
-        <div class="thumb">
-          <span class="rec">REC</span>
-          <img src="https://i.ytimg.com/vi/GXrHcCJ51HU/hqdefault.jpg" alt="【BenQ新型】ScreenBar Halo 2忖度なしレビュー！デスクの生産性を守る始祖の底力" loading="lazy">
-          <span class="dur">7:23</span>
-          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-        </div>
-        <div class="fbody"><h3>【BenQ新型】ScreenBar Halo 2忖度なしレビュー！デスクの生産性を守る始祖の底力</h3></div>
-      </a>
+      <!-- /VIDEOS:AUTO -->
     </div>
-    <p class="footnote rv">※ 手動更新。新着動画は司令部が随時反映する。<a href="https://www.youtube.com/@Umes-House" target="_blank" rel="noopener" style="color:var(--amber);display:inline-flex;align-items:center;gap:4px">チャンネルで全件を見る<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></p>
+    <p class="footnote rv">※ チャンネルの新着を毎日自動で反映している。<a href="https://www.youtube.com/@Umes-House" target="_blank" rel="noopener" style="color:var(--amber);display:inline-flex;align-items:center;gap:4px">チャンネルで全件を見る<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a></p>
   </div>
 </section>
 
