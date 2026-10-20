@@ -5,17 +5,17 @@
      img で読むため色とフォントは直値で持つ（親のCSSも Webフォントも効かない） -->
 <style>
   .f { font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
-  .kick { font-size: 15px; font-weight: 700; fill: #ffc233; letter-spacing: .34em; }
-  .ttl  { font-size: 34px; font-weight: 800; fill: #e8edf4; letter-spacing: .04em; }
-  .vec  { font-size: 26px; font-weight: 800; fill: #ff6b6b; }
-  .no   { font-size: 15px; font-weight: 700; fill: #ffc233; letter-spacing: .2em; }
-  .lbl  { font-size: 25px; font-weight: 800; fill: #e8edf4; }
-  .scp  { font-size: 19px; font-weight: 700; fill: #8fa1b8; }
-  .core { font-size: 25px; font-weight: 800; fill: #0b0f14; }
+  .kick { font-size: 15px; font-weight: 700; fill: #a9c29b; letter-spacing: .34em; }
+  .ttl  { font-size: 34px; font-weight: 800; fill: #f6f1ec; letter-spacing: .04em; }
+  .vec  { font-size: 26px; font-weight: 800; fill: #f05a6e; }
+  .no   { font-size: 15px; font-weight: 700; fill: #a9c29b; letter-spacing: .2em; }
+  .lbl  { font-size: 25px; font-weight: 800; fill: #f6f1ec; }
+  .scp  { font-size: 19px; font-weight: 700; fill: #93858f; }
+  .core { font-size: 25px; font-weight: 800; fill: #1e141b; }
 </style>
 
-<rect width="1200" height="480" fill="#0a0f16"/>
-<path d="M22 46 V22 H46 M1178 434 V458 H1154" fill="none" stroke="#ffc233" stroke-width="2.5"/>
+<rect width="1200" height="480" fill="#1e141b"/>
+<path d="M22 46 V22 H46 M1178 434 V458 H1154" fill="none" stroke="#a9c29b" stroke-width="2.5"/>
 
 <text class="f kick" x="60" y="52">DEFENSE IN DEPTH</text>
 <text class="f ttl"  x="60" y="96">熱力学的縦深防御</text>
@@ -24,42 +24,42 @@
 <text class="f vec" x="292" y="172" text-anchor="middle">伝導</text>
 <text class="f vec" x="600" y="172" text-anchor="middle">対流</text>
 <text class="f vec" x="908" y="172" text-anchor="middle">輻射</text>
-<g stroke="#ff6b6b" stroke-width="2.5" stroke-dasharray="6 5" fill="none">
+<g stroke="#f05a6e" stroke-width="2.5" stroke-dasharray="6 5" fill="none">
   <path d="M292 188 V226 M600 188 V226 M908 188 V226"/>
 </g>
 
 <!-- 四重の防衛線 -->
 <g>
-  <rect x="60" y="240" width="212" height="180" fill="#111823" stroke="#1f2c3d" stroke-width="2"/>
-  <rect x="60" y="240" width="212" height="5" fill="#ffc233"/>
+  <rect x="60" y="240" width="212" height="180" fill="#3a2233" stroke="#655360" stroke-width="2"/>
+  <rect x="60" y="240" width="212" height="5" fill="#a9c29b"/>
   <text class="f no"  x="166" y="282" text-anchor="middle">第一</text>
   <text class="f lbl" x="166" y="332" text-anchor="middle">エアコン</text>
   <text class="f scp" x="166" y="374" text-anchor="middle">全体</text>
 </g>
 <g>
-  <rect x="292" y="240" width="212" height="180" fill="#111823" stroke="#1f2c3d" stroke-width="2"/>
-  <rect x="292" y="240" width="212" height="5" fill="#ffc233"/>
+  <rect x="292" y="240" width="212" height="180" fill="#3a2233" stroke="#655360" stroke-width="2"/>
+  <rect x="292" y="240" width="212" height="5" fill="#a9c29b"/>
   <text class="f no"  x="398" y="282" text-anchor="middle">第二</text>
   <text class="f lbl" x="398" y="332" text-anchor="middle">サーキュレーター</text>
   <text class="f scp" x="398" y="374" text-anchor="middle">循環</text>
 </g>
 <g>
-  <rect x="524" y="240" width="212" height="180" fill="#111823" stroke="#1f2c3d" stroke-width="2"/>
-  <rect x="524" y="240" width="212" height="5" fill="#ffc233"/>
+  <rect x="524" y="240" width="212" height="180" fill="#3a2233" stroke="#655360" stroke-width="2"/>
+  <rect x="524" y="240" width="212" height="5" fill="#a9c29b"/>
   <text class="f no"  x="630" y="282" text-anchor="middle">第三</text>
   <text class="f lbl" x="630" y="332" text-anchor="middle">こたつ</text>
   <text class="f scp" x="630" y="374" text-anchor="middle">拠点</text>
 </g>
 <g>
-  <rect x="756" y="240" width="212" height="180" fill="#111823" stroke="#1f2c3d" stroke-width="2"/>
-  <rect x="756" y="240" width="212" height="5" fill="#ffc233"/>
+  <rect x="756" y="240" width="212" height="180" fill="#3a2233" stroke="#655360" stroke-width="2"/>
+  <rect x="756" y="240" width="212" height="5" fill="#a9c29b"/>
   <text class="f no"  x="862" y="282" text-anchor="middle">第四</text>
   <text class="f lbl" x="862" y="332" text-anchor="middle">電気毛布</text>
   <text class="f scp" x="862" y="374" text-anchor="middle">個</text>
 </g>
 
 <!-- 守るもの -->
-<rect x="988" y="240" width="152" height="180" rx="6" fill="#ffc233"/>
+<rect x="988" y="240" width="152" height="180" rx="6" fill="#a9c29b"/>
 <text class="f core" x="1064" y="322" text-anchor="middle">我が</text>
 <text class="f core" x="1064" y="354" text-anchor="middle">体温</text>
 </svg>

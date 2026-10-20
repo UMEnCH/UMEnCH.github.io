@@ -5,25 +5,25 @@
      img で読むため色とフォントは直値で持つ（親のCSSも Webフォントも効かない） -->
 <style>
   .f { font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
-  .kick { font-size: 15px; font-weight: 700; fill: #ffc233; letter-spacing: .34em; }
-  .ttl  { font-size: 34px; font-weight: 800; fill: #e8edf4; letter-spacing: .04em; }
-  .who  { font-size: 24px; font-weight: 800; fill: #e8edf4; letter-spacing: .1em; }
-  .whog { font-size: 24px; font-weight: 800; fill: #3ddc84; letter-spacing: .1em; }
-  .k    { font-size: 18px; font-weight: 700; fill: #8fa1b8; }
-  .v    { font-size: 30px; font-weight: 800; fill: #ffc233; }
-  .vg   { font-size: 30px; font-weight: 800; fill: #3ddc84; }
-  .mid  { font-size: 19px; font-weight: 700; fill: #8fa1b8; letter-spacing: .2em; }
+  .kick { font-size: 15px; font-weight: 700; fill: #a9c29b; letter-spacing: .34em; }
+  .ttl  { font-size: 34px; font-weight: 800; fill: #f6f1ec; letter-spacing: .04em; }
+  .who  { font-size: 24px; font-weight: 800; fill: #f6f1ec; letter-spacing: .1em; }
+  .whog { font-size: 24px; font-weight: 800; fill: #dde7d7; letter-spacing: .1em; }
+  .k    { font-size: 18px; font-weight: 700; fill: #93858f; }
+  .v    { font-size: 30px; font-weight: 800; fill: #a9c29b; }
+  .vg   { font-size: 30px; font-weight: 800; fill: #dde7d7; }
+  .mid  { font-size: 19px; font-weight: 700; fill: #93858f; letter-spacing: .2em; }
 </style>
 
-<rect width="1200" height="480" fill="#0a0f16"/>
-<path d="M22 46 V22 H46 M1178 434 V458 H1154" fill="none" stroke="#ffc233" stroke-width="2.5"/>
+<rect width="1200" height="480" fill="#1e141b"/>
+<path d="M22 46 V22 H46 M1178 434 V458 H1154" fill="none" stroke="#a9c29b" stroke-width="2.5"/>
 
 <text class="f kick" x="60" y="52">FINAL BALANCE</text>
 <text class="f ttl"  x="60" y="96">作戦総括</text>
 
 <!-- 人類側 -->
-<rect x="60" y="140" width="490" height="280" fill="#111823" stroke="#1f2c3d" stroke-width="2"/>
-<rect x="60" y="140" width="490" height="5" fill="#ffc233"/>
+<rect x="60" y="140" width="490" height="280" fill="#3a2233" stroke="#655360" stroke-width="2"/>
+<rect x="60" y="140" width="490" height="5" fill="#a9c29b"/>
 <text class="f who" x="305" y="186" text-anchor="middle">人類</text>
 <text class="f k" x="305" y="228" text-anchor="middle">兵装</text>
 <text class="f v" x="305" y="266" text-anchor="middle">八点</text>
@@ -32,8 +32,8 @@
 <text class="f k" x="305" y="388" text-anchor="middle">所要　七二時間</text>
 
 <!-- むぎ側 -->
-<rect x="650" y="140" width="490" height="280" fill="#111823" stroke="#3ddc84" stroke-width="2"/>
-<rect x="650" y="140" width="490" height="5" fill="#3ddc84"/>
+<rect x="650" y="140" width="490" height="280" fill="#3a2233" stroke="#dde7d7" stroke-width="2"/>
+<rect x="650" y="140" width="490" height="5" fill="#dde7d7"/>
 <text class="f whog" x="895" y="186" text-anchor="middle">むぎ</text>
 <text class="f k" x="895" y="228" text-anchor="middle">兵装</text>
 <text class="f vg" x="895" y="266" text-anchor="middle">なし</text>
@@ -44,5 +44,5 @@
 <!-- 同じ結果に到達している -->
 <text class="f mid" x="600" y="274" text-anchor="middle">同じ</text>
 <text class="f mid" x="600" y="302" text-anchor="middle">快適</text>
-<path d="M600 180 V250 M600 320 V400" stroke="#1f2c3d" stroke-width="2"/>
+<path d="M600 180 V250 M600 320 V400" stroke="#655360" stroke-width="2"/>
 </svg>

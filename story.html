@@ -23,7 +23,7 @@
 <meta name="twitter:title" content="うめンち物語 — 機密ファイル アーカイブ">
 <meta name="twitter:description" content="機密解除された作戦記録を、立ち絵と会話のまま読む読み物版。司令部（うめ）・参謀（松）・猛獣（むぎ）でお送りする全記録。">
 <meta name="twitter:image" content="https://umench.github.io/assets/ogp/ogp-story.png">
-<meta name="theme-color" content="#0b0f14">
+<meta name="theme-color" content="#1e141b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -114,13 +114,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b0f14; --panel:#111823; --panel2:#0e141d; --line:#1f2c3d;
-  --amber:#ffc233; --amber-d:#e09c00; --green:#3ddc84; --red:#ff5252;
-  --txt:#e8edf4; --sub:#8fa1b8; --mono:'Share Tech Mono',monospace;
+  --bg:#1e141b; --panel:#3a2233; --panel2:#2a1c25; --line:#655360;
+  --amber:#a9c29b; --amber-d:#6a7e60; --green:#dde7d7; --red:#f05a6e;
+  --txt:#f6f1ec; --sub:#93858f; --mono:'Share Tech Mono',monospace;
   /* 話者色は Final Cut 版のテロップ縁取り色に対応させる（地の文の黒だけは暗背景で使えないため置換） */
-  --sp-ume:#ff5252; --sp-matsu:#3ddc84; --sp-mugi:#b07cff; --sp-tv:#6aa8ff; --sp-narration:#8fa1b8;
+  --sp-ume:#f05a6e; --sp-matsu:#dde7d7; --sp-mugi:#fcdbdf; --sp-tv:#dde7d7; --sp-narration:#93858f;
   /* 前書きに凡例が無い作品の③以降（配達員・電話の音声など、作品ごとに別人）はこの色でまとめる */
-  --sp-other:#6aa8ff; --sp-madame:#d9a066;
+  --sp-other:#dde7d7; --sp-madame:#fcdbdf;
   --nav-h:54px;
 }
 /* 本文の文字サイズ（小・中・大）。文字を大きくするぶんテキスト枠を高くし、
@@ -137,7 +137,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
 .mono{font-family:var(--mono)}
 
 /* ===== ナビ（他ページからの複製） ===== */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,15,20,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(30,20,27,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;justify-content:space-between;align-items:center;height:var(--nav-h)}
 nav .brand{font-weight:900;letter-spacing:.08em;font-size:15px;text-decoration:none;color:var(--txt)}
 nav .brand b{color:var(--amber)}
@@ -161,7 +161,7 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .tool{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--sub);background:none;
   border:1px solid var(--line);padding:5px 11px;cursor:pointer;transition:.2s;line-height:1}
 .tool:hover{color:var(--amber);border-color:var(--amber)}
-.tool[aria-pressed="true"]{color:#141413;background:var(--amber);border-color:var(--amber)}
+.tool[aria-pressed="true"]{color:#2a1c25;background:var(--amber);border-color:var(--amber)}
 .tool:disabled{opacity:.4;cursor:default}
 .tool:disabled:hover{color:var(--sub);border-color:var(--line)}
 .tool.icon{display:inline-flex;align-items:center;padding:5px 9px}
@@ -173,7 +173,7 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 /* ステージ＋テキスト枠をまとめた領域。カードはこの全体を覆うので、
    図のときはテキスト枠のぶんまで使える（枠を出し入れしないのでレイアウトは動かない） */
 .viewport{flex:1;position:relative;display:flex;flex-direction:column;min-height:0}
-.stage{flex:1;position:relative;overflow:hidden;cursor:pointer;min-height:0;background:#080b0f}
+.stage{flex:1;position:relative;overflow:hidden;cursor:pointer;min-height:0;background:#1e141b}
 .stage .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.34;
   filter:saturate(.6);transition:opacity .45s ease}
 /* 図解は背景と差し替えて出す（物語を止めずに、絵として視界に置いておく）。
@@ -184,21 +184,21 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .stage.fig .bg{opacity:.05}
 .stage.fig .gridbg{opacity:0}
 /* 図のあいだは上下の焼き込みを弱める。既定のままだと図の文字が沈む */
-.stage.fig::after{background:linear-gradient(180deg,rgba(11,15,20,.28) 0%,
-  rgba(11,15,20,0) 30%,rgba(11,15,20,.55) 100%)}
+.stage.fig::after{background:linear-gradient(180deg,rgba(30,20,27,.28) 0%,
+  rgba(30,20,27,0) 30%,rgba(30,20,27,.55) 100%)}
 /* 図を大きく見たいときだけ押す小さなボタン。ステージのタップ（送り）とは分ける */
 .figbtn{position:absolute;top:10px;right:12px;z-index:5;display:none;align-items:center;gap:6px;
   font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--sub);
-  background:rgba(8,11,15,.74);border:1px solid var(--line);padding:6px 10px;cursor:pointer;
+  background:rgba(30,20,27,.74);border:1px solid var(--line);padding:6px 10px;cursor:pointer;
   transition:.2s;line-height:1;user-select:none;-webkit-user-select:none;
   touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .stage.fig .figbtn{display:inline-flex}
 .figbtn:hover{color:var(--amber);border-color:var(--amber)}
 .stage::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(11,15,20,.7) 0%,rgba(11,15,20,.15) 34%,rgba(11,15,20,.8) 100%)}
+  background:linear-gradient(180deg,rgba(30,20,27,.7) 0%,rgba(30,20,27,.15) 34%,rgba(30,20,27,.8) 100%)}
 .stage .gridbg{position:absolute;inset:0;pointer-events:none;transition:opacity .45s ease;background:
-  linear-gradient(rgba(255,194,51,.05) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(255,194,51,.05) 1px,transparent 1px);
+  linear-gradient(rgba(169,194,155,.05) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(169,194,155,.05) 1px,transparent 1px);
   background-size:44px 44px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 78%)}
 
 .cast{position:absolute;bottom:0;transition:opacity .35s ease,filter .35s ease,transform .35s ease;
@@ -229,17 +229,17 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 /* カード表示中は立ち絵が消えて背景だけが残るので、暗幕を敷いて文字を読みやすくする。
    z-index はステージの上下グラデーション（.stage::after）より前に出すため */
 .card{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:28px;
-  background:rgba(8,11,15,.72);z-index:2;cursor:pointer}
+  background:rgba(30,20,27,.72);z-index:2;cursor:pointer}
 .card.show{display:flex;animation:cardin .5s ease both}
 @keyframes cardin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.card .inner{max-width:760px;width:100%;background:rgba(14,20,29,.94);border:1px solid var(--line);
+.card .inner{max-width:760px;width:100%;background:rgba(42,28,37,.94);border:1px solid var(--line);
   padding:32px 34px;position:relative;max-height:100%;overflow-y:auto}
 .card .inner::before,.card .inner::after{content:"";position:absolute;width:16px;height:16px;border:2px solid var(--amber)}
 .card .inner::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
 .card .inner::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
 .card .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--amber);margin-bottom:14px}
 .card h2{font-size:calc(var(--fs-body) * 1.4);font-weight:900;letter-spacing:.03em;line-height:1.65;margin-bottom:6px}
-.card p{font-size:calc(var(--fs-body) * .92);color:#cfd9e6;margin-top:12px}
+.card p{font-size:calc(var(--fs-body) * .92);color:#f6f1ec;margin-top:12px}
 .card p:first-of-type{margin-top:0}
 .card.k-chapter .inner{text-align:center;border-color:var(--amber)}
 .card.k-closing .inner{text-align:center}
@@ -258,14 +258,14 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .who b{font-family:'Zen Kaku Gothic New',sans-serif;font-size:calc(var(--fs-body) * .91);font-weight:900;letter-spacing:.04em;margin-right:9px}
 .body{font-size:var(--fs-body);line-height:1.95;flex:1;overflow-y:auto;min-height:0;padding-right:6px}
 .body em{font-style:normal;font-weight:900;color:var(--amber)}
-.k-narration .body{color:#c8d3e0}
-.k-narration .body em{color:#ffd97a}
+.k-narration .body{color:#f6f1ec}
+.k-narration .body em{color:#dde7d7}
 .nextmark{position:absolute;right:22px;bottom:12px;color:var(--amber);opacity:0;transition:opacity .25s}
 .nextmark.show{opacity:.9;animation:bob 1.3s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
 /* ===== オーバーレイ（タイトル / 目次 / ログ） ===== */
-.overlay{position:fixed;inset:0;z-index:60;background:rgba(8,11,15,.93);backdrop-filter:blur(4px);
+.overlay{position:fixed;inset:0;z-index:60;background:rgba(30,20,27,.93);backdrop-filter:blur(4px);
   display:none;align-items:center;justify-content:center;padding:24px}
 .overlay.show{display:flex}
 .sheet{background:var(--panel);border:1px solid var(--line);max-width:720px;width:100%;
@@ -285,10 +285,10 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .btn,.tool,.jump{user-select:none;-webkit-user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;font-size:14px;font-weight:700;
   text-decoration:none;cursor:pointer;transition:.2s;letter-spacing:.06em;border:none;font-family:inherit}
-.btn-amber{background:var(--amber);color:#141413;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
-.btn-amber:hover{background:#ffd24d}
+.btn-amber{background:var(--amber);color:#2a1c25;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
+.btn-amber:hover{background:#dde7d7}
 .btn-ghost{color:var(--amber);border:1px solid var(--amber);background:none;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)}
-.btn-ghost:hover{background:rgba(255,194,51,.1)}
+.btn-ghost:hover{background:rgba(169,194,155,.1)}
 .jump{display:block;width:100%;text-align:left;background:none;border:none;border-bottom:1px solid var(--line);
   padding:13px 4px;color:var(--txt);cursor:pointer;font-family:inherit;font-size:calc(var(--fs-body) * .88);transition:.2s;line-height:1.7}
 .jump:hover{color:var(--amber);padding-left:10px}
@@ -297,7 +297,7 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .logrow{padding:12px 4px;border-bottom:1px solid var(--line);font-size:calc(var(--fs-body) * .88);line-height:1.85}
 .logrow .who2{font-family:var(--mono);font-size:11px;letter-spacing:.16em;display:block;margin-bottom:3px}
 .logrow em{font-style:normal;font-weight:900;color:var(--amber)}
-.logrow.n{color:#b9c5d4}
+.logrow.n{color:#93858f}
 
 /* 図の拡大表示。シートの飾りを外して図そのものを大きく出す */
 .overlay.figview .sheet{background:none;border:none;max-width:1320px}
@@ -308,7 +308,7 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .overlay.figview .sheet .scroll{padding:0;overflow:visible}
 .overlay.figview .sheet footer{border-top:none;padding:14px 0 0;justify-content:center}
 .overlay.figview img{display:block;width:100%;max-height:68vh;object-fit:contain;
-  border:1px solid var(--line);cursor:pointer;background:#0a0f16}
+  border:1px solid var(--line);cursor:pointer;background:#1e141b}
 
 /* ===== 設定シート（文字サイズ・自動送り・読み上げ） ===== */
 .setrow{padding:14px 4px;border-bottom:1px solid var(--line);display:flex;align-items:center;
@@ -322,7 +322,7 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
   transition:.2s;line-height:1;user-select:none;-webkit-user-select:none;touch-action:manipulation}
 .seg button:first-child{border-left:none}
 .seg button:hover{color:var(--amber)}
-.seg button[aria-pressed="true"]{color:#141413;background:var(--amber)}
+.seg button[aria-pressed="true"]{color:#2a1c25;background:var(--amber)}
 .setrow select{font-family:inherit;font-size:13px;color:var(--txt);background:var(--panel2);
   border:1px solid var(--line);padding:7px 10px;max-width:190px;cursor:pointer}
 .setrow input[type="range"]{width:150px;accent-color:var(--amber);cursor:pointer}
@@ -347,7 +347,7 @@ nav .links a:hover,nav .links a.active{color:var(--amber)}
 .storycard::before,.storycard::after{content:"";position:absolute;width:12px;height:12px;border:2px solid var(--amber);transition:.25s}
 .storycard::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
 .storycard::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
-.storycard:hover{border-color:#31445e;transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,0,0,.5)}
+.storycard:hover{border-color:#93858f;transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,0,0,.5)}
 .storycard:hover::before,.storycard:hover::after{width:22px;height:22px}
 .storycard .no{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--sub);display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .storycard .state{color:var(--green);letter-spacing:.1em}
