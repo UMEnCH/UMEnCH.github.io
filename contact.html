@@ -135,6 +135,8 @@ h1 .amber{color:var(--amber);text-shadow:0 0 24px rgba(169,194,155,.4)}
 /* ===== 送信完了バナー ===== */
 .sent-banner{display:none;border:1px solid var(--green);background:rgba(221,231,215,.08);padding:22px 26px;margin-bottom:30px;position:relative;max-width:660px}
 .sent-banner.show{display:block}
+.send-error{display:none;margin-top:14px;padding:12px 14px;border:1px solid #F05A6E;color:var(--txt);font-size:13px;line-height:1.7}
+.send-error.show{display:block}
 .sent-banner .st{font-family:var(--mono);font-size:12px;color:var(--green);letter-spacing:.2em;margin-bottom:6px}
 .sent-banner p{font-size:14px;color:var(--txt)}
 
@@ -204,14 +206,14 @@ footer.site .back{display:inline-block;margin-top:14px;color:var(--amber);text-d
 
     <div class="form-panel rv">
       <div class="form-label">TRANSMISSION FORM / 通信フォーム</div>
-      <form action="https://formsubmit.co/kuskmne78@gmail.com" method="POST">
-        <!-- FormSubmit 設定 -->
-        <input type="hidden" name="_subject" value="【うめンち】お問い合わせ（通信要請フォーム）">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://umench.github.io/contact.html?sent=1">
-        <input type="hidden" name="_autoresponse" value="うめンち作戦司令部です。通信を受信しました。内容を確認のうえ、順次応答いたします。しばらくお待ちください。">
+      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms 設定（access_key は公開前提のキー。送信先メールは Web3Forms 側で紐づく） -->
+        <input type="hidden" name="access_key" value="f5f29596-81bb-40b8-8ef0-dde961153c25">
+        <input type="hidden" name="subject" value="【うめンち】お問い合わせ（通信要請フォーム）">
+        <input type="hidden" name="from_name" value="うめンち 通信要請フォーム">
+        <input type="hidden" name="redirect" value="https://umench.github.io/contact.html?sent=1">
         <!-- スパム対策のハニーポット（人間は入力しない） -->
-        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off">
+        <input type="checkbox" name="botcheck" class="honey" tabindex="-1" autocomplete="off">
 
         <div class="field">
           <label for="name">発信者名（お名前）<span class="req">*</span></label>
@@ -219,7 +221,7 @@ footer.site .back{display:inline-block;margin-top:14px;color:var(--amber);text-d
         </div>
         <div class="field">
           <label for="email">返信先メールアドレス<span class="req">*</span></label>
-          <input type="email" id="email" name="メールアドレス" required placeholder="例）you@example.com">
+          <input type="email" id="email" name="email" required placeholder="例）you@example.com">
         </div>
         <div class="field">
           <label for="type">通信種別</label>
@@ -239,12 +241,12 @@ footer.site .back{display:inline-block;margin-top:14px;color:var(--amber);text-d
           <textarea id="message" name="メッセージ" required placeholder="ご用件をご記入ください。"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-amber">通信を送信する</button>
+        <button type="submit" class="btn btn-amber" id="sendBtn">通信を送信する</button>
+        <div class="send-error" id="sendError" role="alert"></div>
 
         <p class="form-note">
-          ※ 送信内容はフォーム処理サービス FormSubmit を経由して司令部のメールに届きます。<br>
+          ※ 送信内容はフォーム処理サービス Web3Forms を経由して司令部のメールに届きます。<br>
           ※ ご入力いただいた個人情報は、お問い合わせへの応答以外の目的には使用しません。<br>
-          ※ 送信後、確認ページに遷移する場合があります（初回はサービスの認証手続きが入ることがあります）。
         </p>
       </form>
     </div>
@@ -281,7 +283,7 @@ const TYPE_NOTES = {
 (() => {
   const sel = document.getElementById('type');
   const note = document.getElementById('typeNote');
-  const subject = document.querySelector('input[name="_subject"]');
+  const subject = document.querySelector('input[name="subject"]');
   if (!sel || !note) return;
 
   const key = () => sel.options[sel.selectedIndex].dataset.key || 'other';
@@ -309,6 +311,49 @@ const TYPE_NOTES = {
   const q = new URLSearchParams(location.search).get('type');
   if (q) preset(q);
   render();
+})();
+
+// 送信は fetch で行う。サービスが応答しないときは15秒で打ち切り、画面に案内を出す
+(() => {
+  const form = document.getElementById('contactForm');
+  const btn = document.getElementById('sendBtn');
+  const err = document.getElementById('sendError');
+  if (!form || !window.fetch || !window.AbortController) return; // 古いブラウザは通常の送信
+  const label = btn.textContent;
+  const fail = msg => {
+    err.textContent = msg + ' お手数ですが、時間をおいて再度お試しいただくか、通信チャネル（X など）からご連絡ください。';
+    err.classList.add('show');
+    btn.disabled = false; btn.textContent = label;
+  };
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (form.botcheck && form.botcheck.checked) return;
+    err.classList.remove('show');
+    btn.disabled = true; btn.textContent = '送信中…';
+    const data = Object.fromEntries(new FormData(form));
+    delete data.redirect; delete data.botcheck;
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 15000);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify(data),
+        signal: ctl.signal
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || json.success === false) throw new Error(json.message || ('HTTP ' + res.status));
+      form.reset();
+      document.getElementById('type').dispatchEvent(new Event('change'));
+      btn.disabled = false; btn.textContent = label;
+      const b = document.getElementById('sentBanner');
+      if (b) { b.classList.add('show'); b.scrollIntoView({behavior:'smooth', block:'center'}); }
+    } catch (x) {
+      fail(x.name === 'AbortError' ? '送信がタイムアウトしました。' : '送信に失敗しました（' + x.message + '）。');
+    } finally {
+      clearTimeout(timer);
+    }
+  });
 })();
 
 // スクロール出現
