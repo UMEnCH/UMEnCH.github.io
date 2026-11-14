@@ -14,6 +14,7 @@ from __future__ import annotations
 import html
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -23,7 +24,13 @@ ROOT = Path(__file__).resolve().parents[2]
 INDEX = ROOT / "index.html"
 
 CHANNEL_ID = "UCXY1m77AzKGFV09ucXD6vxA"  # @Umes-House
-FEED = f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID}"
+FEEDS = [
+    f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID}",
+    # 同じ中身のアップロード再生リスト版（UC→UU）。片方だけ404になることがある
+    f"https://www.youtube.com/feeds/videos.xml?playlist_id=UU{CHANNEL_ID[2:]}",
+]
+ATTEMPTS = 6  # 取得の試行回数
+WAIT = 10  # 試行間隔の基準（秒）。10, 20, 30… と延ばす
 COUNT = 3  # 掲載する本数（グリッドが3列なので3の倍数にする）
 
 BEGIN = "<!-- VIDEOS:AUTO -->"
@@ -40,10 +47,30 @@ def fetch(url: str, timeout: int = 30) -> str:
         return r.read().decode("utf-8", "replace")
 
 
+class FeedUnavailable(Exception):
+    """RSSが一時的に取れない（YouTube側の404/5xx・タイムアウト）。"""
+
+
+def fetch_feed() -> str:
+    """RSSを取る。YouTube の RSS は Actions の実行環境から時々 404 を返すので、
+    チャンネル版とアップロード再生リスト版を交互に、間隔を空けて何度か試す。"""
+    last = None
+    for attempt in range(ATTEMPTS):
+        url = FEEDS[attempt % len(FEEDS)]
+        try:
+            return fetch(url)
+        except (urllib.error.URLError, TimeoutError) as e:
+            last = e
+            print(f"RSS取得失敗 {attempt + 1}/{ATTEMPTS}: {e}（{url}）", file=sys.stderr)
+            if attempt + 1 < ATTEMPTS:
+                time.sleep(WAIT * (attempt + 1))
+    raise FeedUnavailable(str(last))
+
+
 def latest_videos(limit: int) -> list[dict]:
     """RSSから最新動画を取り出す。ショートも混ざるが、RSSでは判別できないのでそのまま扱う。"""
     ns = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015"}
-    root = ET.fromstring(fetch(FEED))
+    root = ET.fromstring(fetch_feed())
     out = []
     for e in root.findall("a:entry", ns)[:limit]:
         vid = e.find("yt:videoId", ns)
@@ -104,10 +131,16 @@ def card(v: dict, i: int, known: dict[str, str]) -> str:
 def main() -> int:
     check_only = "--check" in sys.argv
 
-    videos = latest_videos(COUNT)
+    # RSSが取れない日は失敗扱いにしない（失敗メールが毎日届くのを防ぐ）。
+    # 警告だけ残して、今日は更新なしで終わる。翌日の実行で追いつく。
+    try:
+        videos = latest_videos(COUNT)
+    except (FeedUnavailable, ET.ParseError) as e:
+        print(f"::warning::RSSが取れなかったので今日は更新しない（{e}）")
+        return 0
     if len(videos) < COUNT:
-        print(f"RSSから{COUNT}本取れなかった（{len(videos)}本）。index.html は変更しない。", file=sys.stderr)
-        return 1
+        print(f"::warning::RSSから{COUNT}本取れなかった（{len(videos)}本）。index.html は変更しない。")
+        return 0
 
     src = INDEX.read_text(encoding="utf-8")
     if BEGIN not in src or END not in src:
